@@ -24,25 +24,31 @@
 	<!-- type 속성값 -->
 	<!-- => hidden : 입력태그를 숨겨 사용자로부터 값을 입력받지 않고 요청 웹프로그램에게 필요한 값 전달 -->	
 	<!-- => text : 문자값을 입력받아 전달 -->	
-	<!-- => password : 문자값을 입력받아 전달 - 입력값이 특정문자로 변환되어 표시 -->	
+	<!-- => password : 문자값을 입력받아 전달 - 입력값이 특정문자로 변환되어 표시 -->
+	<!-- => radio : name 속성값이 같은 입력태그 중 하나를 선택하여 전달 -->	
+	<!-- checkbox : name 속성값이 같은 입력태그 중 한 개 이상을 선택하여 전달 -->
+	<!-- file : 파일을 입력받아 전달 -->
+	<!-- email(HTML5) : 이메일을 입력받아 전달 - 이메일 형식에 검증 처리 -->
+	<!-- number : 숫자 형식의 문자값을 입력받아 전달(증가 또는 감소 버튼 제공) 
+					- 숫자형식의 문자값만 입력 가능하여 최소값 및 최대값 검증 가능 -->
 	<form action="#" method="post">
 		<input type="hidden" name="num" value="1000">
 		<p>아이디 : <input type="text" name="id" size="10" maxlength="20" autofocus="autofocus" required="required"></p>
 		<p>비밀번호 : <input type="password" name="passwd" placeholder="형식에 맞는 비밀번호 입력"></p>
 		<p>이름 : <input type="text" name="name" value="홍길동" readonly="readonly"></p>
-		<p>성별 : <input type="radio" name="gender" value="남자">남자 <input type="radio" name="gender" value="여자">여자
+		<p>성별 : <input type="radio" name="gender" value="M">남자 <input type="radio" name="gender" value="W" checked="checked">여자
+ 		<p>취미 : <input type="checkbox" name="hobby" value="독서">독서
+ 			<input type="checkbox" name="hobby" value="게임">게임
+ 			<input type="checkbox" name="hobby" value="등산">등산
+ 			<input type="checkbox" name="hobby" value="낚시">낚시</p>
+ 		<p>사진 : <input type="file" name="profile"></p>
+ 		<p>이메일 : <input type="email" name="email"></p>
+ 		<p>나이 : <input type="number" name="age" min="1" max="100"></p> 		
+ 		
+ 		
  		<button type="submit">회원가입</button>		
-	</form>
+ 	</form>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
