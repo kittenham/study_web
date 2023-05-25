@@ -31,6 +31,13 @@
 	<!-- email(HTML5) : 이메일을 입력받아 전달 - 이메일 형식에 검증 처리 -->
 	<!-- number : 숫자 형식의 문자값을 입력받아 전달(증가 또는 감소 버튼 제공) 
 					- 숫자형식의 문자값만 입력 가능하여 최소값 및 최대값 검증 가능 -->
+	<!-- tel(HTML5) : 전화번호 형시그이 문자값을 입력받아 전달 - 스마트기기의 입력패드의 변경 -->
+	<!-- serach(HTML5) : 검색 관련 문자값을 입력받아 전달 - 스마트 기기의 자동완성 기능 사용 -->
+	<!-- color(HTML5) :  -->
+	<!-- range<HTML5) :  -->
+	<!-- date : -->
+	<!-- time(HTML5) : -->
+	<!-- datetime-local(HTML5) :  -->
 	<form action="#" method="post">
 		<input type="hidden" name="num" value="1000">
 		<p>아이디 : <input type="text" name="id" size="10" maxlength="20" autofocus="autofocus" required="required"></p>
@@ -43,10 +50,17 @@
  			<input type="checkbox" name="hobby" value="낚시">낚시</p>
  		<p>사진 : <input type="file" name="profile"></p>
  		<p>이메일 : <input type="email" name="email"></p>
- 		<p>나이 : <input type="number" name="age" min="1" max="100"></p> 		
+ 		<p>나이 : <input type="number" name="age" min="1" max="100"></p>
+ 		<p>전화번호 : <input type="tel"	 name="phone"></p>
+ 		<p>SNS : <input type="url" name="sns"></p>
+ 		<p>검색 : <input type="search" name="keyword"></p>
+ 		<p>좋아하는 색 : <input type="color" name="color"></p>
+ 		<p>실력 : 하<input type="range" name="grade" min="1" max="3">상</p>
+ 		<p>생년월일 : <input type="date" name="birthday"></p>
+ 		<p>기상시간 : <input type="time" name="time"></p>
+ 		<p>알람 : <input type="datetime-local" name="alarm"></p>
  		
- 		
- 		<button type="submit">회원가입</button>		
+ 		<button type="submit">회원가입</button>
  	</form>
 </body>
 </html>
