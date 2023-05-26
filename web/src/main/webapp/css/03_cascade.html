@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML</title>
+<style type="text/css">
+body{
+	color: red;
+} /* 제목과 본문 모두 빨간색으로 나옴.=> 부모 엘리먼트에 적용된 스타일은 자식 엘리먼트에 "상속"되어 적용되기 때문 */
+/* 자식 엘리먼트에 상속되지 않는 스타일도 존재한다. ex. 백그라운드*/
+
+p{
+	color: green;
+} /* CSS 스타일은 선언순서에 의해 단계적으로 적용되어 출력된다. - 이때, 기존 스타일은 폐기된다(오버라이드)*/
+
+</style>
+</head>
+<body>
+	<h1>CSS 스타일의 단계적 적용과 상속</h1>
+	<hr>
+	<p>브라우저에 출력될 아주 중요한 내용입니다.</p>
+
+</body>
+</html>
