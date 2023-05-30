@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+div{
+	margin: 5px;
+	width: 200px;
+	/* 박스모델의 태그 내용이 박스모델의 폭보다 큰 경우 자동 줄바꿈 처리되어 출력된다. */
+	border: 1px solid red;
+}
+
+.space1{ white-space: pre-line; }
+/* white-space : 1. 공백 처리에 대한 스타일 속성  2. 박스 모델의 폭보다 큰 태그내용 처리에 대한 스타일 속성 */
+/* 속성값 : normal(기본값(pre-line도 가능)), pre, nowrap, pre-wrap */
+/* pre-line : 다수의 공백을 하나의 공백으로 처리하여 출력하고 박스모델보다 큰 태그내용은 자동줄바꿈 처리하여 출력한다. */
+
+.space2{ white-space: pre; }
+/* pre : 다수의 공백을 다수의 공백으로 처리하여 박스모델보다 큰 태그내용은 자동줄바꿈 없이 그대로 처리하여 출력한다.  */
+/* => 태그내용이 박스모델의 폭을 벗어나 출력 처리된다.*/
+
+.space3{ white-space: nowrap; }
+
+
+.space4{ white-space: pre-wrap; }
+
+</style>
+</head>
+<body>
+	<h1>공백 관련 스타일 속성</h1>
+	<hr>
+	<!-- HTML 문서의 다수의 공백은 하나의 공백으로 처리되어 출력된다. -->
+	<div class="space0">웹표준(HTML5+CSS+JavaScript)를     이용한     웹사이트 만들기</div> <!-- => 아무리 띄워써도 출력시에는 공백이 하나로 처리됨. -->
+	<div class="space1">웹표준(HTML5+CSS+JavaScript)를     이용한     웹사이트 만들기</div>
+	<div class="space2">웹표준(HTML5+CSS+JavaScript)를     이용한     웹사이트 만들기</div>
+	<div class="space3">웹표준(HTML5+CSS+JavaScript)를     이용한     웹사이트 만들기</div>
+	<div class="space4">웹표준(HTML5+CSS+JavaScript)를     이용한     웹사이트 만들기</div>
+
+</body>
+</html>
