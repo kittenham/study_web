@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+/* 다른 박스모델을 출력하기 위한 영역을 제공하는 컨테이너 역할의 박스모델 */
+#container{
+	width: 800px;
+	min-height: 600px;
+		/* min-height : 박스모델의 최소높이를 설정하기 위한 스타일 속성 */
+	border: 1px solid red;	
+}
+
+/* 컨테이너 영역에 출력될 아이템 역할의 박스모델 */
+.box{
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	border: 1px solid green;
+	/*display: inline; 박스모델이 이상하게 연결됨. -> 폭과 넓이가 안맞아서+margin 적용X => 따라서 inline-bolck을 써야함.*/
+	/*display: inline-block;*/ 
+	
+	/* float : 컨테이너 역할의 박스모델에 아이템 역할의 박스모델을 왼쪽 또는 오른쪽 위치부터 차례대로 배치한다.*/
+	/* 속성값 : none(기본값), left, right */
+	float: left;
+}
+
+/* display: inline-block; 에서는 자동줄바꿈 처리가 되어 p태그의 글씨가 아랫줄로 내려감.
+하지만, float를 쓸때는 옆에 여백이 남으면 p태그의 글씨가 여백안으로 들어가서 써짐.(자동줄바꿈 되지않음) 
+따라서, 줄바꿈 처리를 하려면 따로 설정해줘야함. */
+p{
+	clear: both;
+	/* clear : float 스타일로 설정된 배치 관련 */
+	/* 속성값 : left, right, both(왼오 모두 초기화)*/
+}
+
+</style>
+
+</head>
+<body>
+	<h1>박스모델 배치 관련 스타일 속성</h1>
+	<hr>
+	<div id="container">
+		<div class="box">></div>
+		<div class="box">></div>
+		<div class="box">></div>
+		<div class="box">></div>
+		<div class="box">></div>
+		<div class="box">></div>
+		<p>안녕하세요</p>
+	</div>
+
+</body>
+</html>

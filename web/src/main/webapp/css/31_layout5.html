@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style type="text/css">
+#container{
+	width: 800px;
+	min-height: 600px;
+	border: 1px solid red;
+	
+	display: flex;
+	/* 컨테이너 역할의 박스모델에 display 속성값을 [flex]로 설정하는 경우, Flex Container로 처리되어 아이템 역할의 박스모델을 
+	한쪽 방향의 일정한 간격으로 설정하여 배치한다.*/
+	
+	flex-direction: row;
+	/* flex-direction : Flex Container에서 Flex Item을 배치하는 방향을 설정하는 스타일 속성 */
+	/* 속성값 : row(기본), column, row-reverse, column-reverse */
+	
+	flex-wrap: wrap;
+	/* flex-wrap : Flex Container에서 Flex Item 배치에 대한 줄바꿈 처리의 스타일 속성 */
+	/* 속성값 : nowrap(기본), wrap(아래 줄바꿈 처리), wrap-reverse(위 줄바꿈 처리) */
+	
+	flex-flow: row wrap;
+	/* felx-flow : flex-direction과 flex-wrap을 동시에 설정하는 스타일 속성*/
+	
+	justify-content: center;
+	/*justify-content : Felx Container에서 Flex item을 정렬하기 위한 스타일 속성*/
+	/* 속성값 : flex-start(기본), flex-end, center, space-between, space-around, space-evenly */
+	
+}
+
+.box{
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	border: 1px solid green;
+}
+</style>
+</head>
+<body>
+	<h1>박스모델 배치 관련 스타일 속성</h1>
+	<hr>
+	<div id="container">
+		<div class="box">A</div>
+		<div class="box">B</div>
+		<div class="box">C</div>
+		<div class="box">D</div>
+		<div class="box">E</div>
+		<div class="box">F</div>
+	</div>
+
+</body>
+</html>
