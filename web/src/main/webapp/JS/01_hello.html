@@ -1,3 +1,7 @@
+<!-- 웹문서를 해석하여 실행하는 순서 -->
+<!-- => HTML 태그를 읽어 메모리에 저장(DOM Parser) - DOM Tree >> CSS로 DOM Tree의 태그에 적용
+ >> JavaScript 실행 >> DOM Tree의 CSS가 적용된 HTML 태그를 화면에 출력(Rendering) -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +15,8 @@
 <!-- Tern 플러그인을 사용하기 위해  Web 프로젝트를 Tern 프로젝트로 변환 -->
 <!-- => 프로젝트 >> 오른쪽 버튼 클릭(메뉴) >> Configure >> Convert to Tern Project >> Modules에서 Browser와 jQuery 선택 -->
 <!-- Conver to Tern Project는 한번하면 그 다음에는 안해도되기 때문에 삭제 후 다시 설치하면 안타나날 수도 있음. 
-그때  Modules 확인은 properties >> Client-side-Javascript >> tern >> Browser, jQuery 선택후 적용 -->
+그때  Modules 확인&수정은 properties >> Client-side-Javascript >> tern >> Browser, jQuery 선택후 적용 -->
+<!-- Modules 수정은 properties >> Client-side-Javascript >> tern >> module에 들어가서 수정 가능-->
 
 <!-- script 태그를 사용하여 JavaScript Source File를 불러와 HTML 문서에 포함 -->
 <!-- => 웹사이트를 구성하는 모든 웹문서에 동일한 기능(함수)을 제공하기 위해 사용 -->
@@ -19,6 +24,7 @@
 
 <!-- script 태그 : 스크립트 언어를 사용하여 프로그램을 작성하는 영역을 제공하는 태그 -->
 <!-- => 웹문서에 script 태그를 여러번 선언하여 자바스크립트 작성 - 순차적으로 실행 -->
+<!-- 보통 head 태그보다는 body 태그 안에 많이 사용하고, head태그 안에 쓸 경우에는 HTML 이벤트가 끝나고 실행한다는 명령 코드를 추가하는 것이 좋다.-->
 <script type="text/javascript">
 //자바스트립트의 주석문와 자바와 동일
 
@@ -30,7 +36,9 @@
 // => 객체의 속성(Property)와 함수(Method)를 이용하여 명령을 작성하여 실행
 
 //console 객체 : 브라우저 콘솔을 표현하기 위해 제공되는 내장객체
+//=> 자바스크립트가 미리 만들어서 사용자에게 제공하는 객체(=내장객체)
 //console.log(message) : 브라우저 콘솔에 메세지를 출력하는 메소드
+//=> 단축키 : Ctrl+Shift+I
 //console.log("Hello, JavaScript!!!");
 
 //window 객체 : 웹브라우저를 표현하기 위해  제공되는 내장객체
