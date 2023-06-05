@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>내장함수 - eval 함수</h1>
+	<hr>
+	<p>eval(stirng) : 매개변수로 문자값을 전달받아 자바스크립트 명령으로 변환하여 실행하는 함수
+	
+	<script type="text/javascript">
+	/*
+	var text = "20+10";
+	//alert(text); //출력 : 20+10  //(변수에 저장된 문자값 출력)
+	alert(eval(text));	//출력 : 30  //(변수에 저장된 문자값으로 명령으로 변환되어 실행)
+	*/
+	
+	/*
+	var operation=prompt("연산식을 입력해 주세요");
+	alert("연산결과 = "+eval(operation));	//연산식 입력해서 계산해주는 경고창이 출력됨.
+	*/
+	
+	var display = function() {
+		alert('함수의 명령 실행');
+	};
+	//alert("변수의 자료형 = "+typeof(display));	 //출력 : 변수의 자료형 = function
+	//display();  //변수에 저장된 값이 함수가 아니므로 함수 호출이 불가하다.(display is not a function) => 에러발생
+	
+	//eval 함수를 사용하여 변수에 저장된 문자값을 실행
+	//=> 함수가 저장된 문자값(변수)은 자바스크립트 명령으로 변환되어 함수가 먼저 선언되므로 앞과 뒤에 ( ) 기호를 사용하여 우선처리한다.
+	//alert("변수의 자료형 = "+typeof(eval("("+display+")")));	//출력 : 변수의 자료형 = function
+	eval("("+display))(); //문자값으로 저장된 함수를 eval 함수를 사용하여 선언한 후 직접 호출한 것.
+
+	</script>
+
+</body>
+</html>
