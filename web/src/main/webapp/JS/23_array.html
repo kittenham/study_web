@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>Array 클래스 함수</h1>
+	<hr>
+	<p>자바스크립트에서는 배열도 객체
+	<p>다수의 값(객체)를 저장하는 객체를 생성하기 위한 클래스 함수</p>
+	<p>Array 객체에 대한 프로퍼티와 메소드가 제공된다.</p>
+	
+	<script type="text/javascript">
+	/*
+	var array = new Array();	//요소가 하나도 없는 Array 객체가 하나 생성됨
+	
+	alert(array.length);
+	//Array.length : Array 객체에 저장된 요소의 갯수를 저장한 프로퍼티
+	//alert(array,length); //출력 : 0
+	
+	alert(array.toString);  //객체 메소드를 호출하여 반환되는 값 출력 //=> 지금은 아무 값도 출력되지 않음.
+	//array.toString : Array 객체에 저장된 모든 요소값을 문자값으로 반환하는 메소드. 호출할 필요 없음
+	
+	//Array 객체를 저장한 변수를 출력할 경우 자동으로 toString() 메소드 호출한다. 따라서 따로 호출할 필요 없다.
+	*/
+	
+	/*
+	var array = new Array(5);  //요소가 5개인 Array 객체 하나 생성
+	//Array(size) : 매개변수로 전달받은 숫자값(정수)의 갯수만큼 요소를 가진 Array 객체 생성
+	//=> Array 객체의 요소에는 자동으로 null 이 저장됨
+	alert(array.length);	//출력시 : 아무 값도 출력되지 않음
+	alert(array);
+	*/
+	
+	/*
+	var array = new Array(10,20,30);
+	//Array(value, value, ...) : 매개변수에 2개 이상의 값을 전달받아 Array 객체의 요소값으로 저장된 Array 객체를 생성
+	//- 전달된 전달값의 갯수만큼 요소를 가진 Array 객체가 생성된다.
+	//Array 객체의 요소값으로 전달값이 차례대로 저장된다.
+	alert(array);  //출력 : 10,20,30
+	
+	//Array 객체에 저장된 요소는 첨자(0부터 1씩 증가되는 정수값)를 사용하여 구분
+	//(**오라클만! 첨자값이 1부터 증가된다. 나머지는 거의다 0부터 시작)
+	//=> Array 객체의 요소는 [] 연산자에 첨자를 사용하여 표현
+	alert("arrary[0] = "+array[0]+", array[1] = "+array[1]+", array[2] = "+array[2]);
+	//출력 : arrary[0] = 10, array[1] = 20, array[2] = 30
+	
+	alert("array[3] = "+array[3]);  //출력 : array[3] = undefined
+	//Array 객체의 요소를 표현하는 첨자가 범위를 벗어난 경우, 자바는 NullPointException이 떨어지지만 JS는 undefined가 뜬다. 
+	
+	//JSON을 이용하여 Array 객체 생성
+	var array=[];  //Empty Array
+	alert(array.length);
+	
+	//JSON을 이용하여 Array 객체 생성하고 Array 객체의 요소에 초기값을 저장한다.
+	var array=[10,20,30];
+	
+	//for 구문을 이용하여 Array 객체에 저장된 요소에 대한 일괄 처리가 가능하다.
+	//가장 고전적이지만 가장 많이 쓰임.
+	for(i=0;i<array.length;i++){
+		alert("array=["+i+"] = "+array[i]);
+	}
+	
+	//for 구문에 in 연산자를 이용해 Array 객체의 첨자를 제공받아 일괄 처리도 가능하다.
+	for(index in array) {
+		alert("array=["+index+"] = "+array[index]);
+	}
+	
+	//for 구문에 of 연산자를 이용해 Array 객체의 요소값을 제공받아 일괄 처리도 가능하다.
+	//ES6에서만 가능
+	for(value of array) {
+		alert(value);
+	}
+	
+	//Array.forEach(callback(element[, index][, array])) : Array 객체의 요소를 일괄처리하기위한 기능을 제공하는 메소드
+	//=> 메소드의 매개변수를 콜백함수를 전달하면 Array 객체에 저장된 요소의 갯수만큼 반복 호출되며,
+	//	콜백함수의 매개변수로 전달받은 값을 이용하여 Array 객체를 콜백함수에서 처리할 수 있다.
+	//=> 콜백함수의 매개변수에는 요소값, 첨자, Array 객체가 저장되어 콜백함수에서 사용
+	array.forEach(function(elt,i){
+		alert("array["+i+"] = "+elt);
+	});
+	*/
+	
+	
+	alert(array);  //출력 : 10,20,30
+	
+	//Array.push(value) : Array 객체의 마지막 위치에 요소를 추가하여 매개변수로 전달받은 값을 요소값으로 저장하는 메소드
+	array.push(40);
+	alert(array); //출력 : 10,20,30,40
+	
+	//Array.pop() : Array 객체의 마지막 위치에 요소를 삭제하고 삭제된 요소의 값을 반환하는 메소드
+	var value = array.pop();
+	alert(array);  //출력 : 10,20,30
+	alert(value);  //출력 : 40
+	
+	//Array.unshift(value) : Array 객체의 첫번째 위치에 요소를 추가하고 매개변수로 전달받은 값을 요소하는 값으로 저장하는 메소드
+	//////////////////////////////////////////
+	
+	
+	
+	</script> 
+
+</body>
+</html>
