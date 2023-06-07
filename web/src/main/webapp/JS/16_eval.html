@@ -22,16 +22,19 @@
 	alert("연산결과 = "+eval(operation));	//연산식 입력해서 계산해주는 경고창이 출력됨.
 	*/
 	
-	var display = function() {
-		alert('함수의 명령 실행');
-	};
+	var display = function() { alert('함수의 명령 실행'); };
+	//익명함수 아님. 익명함수 형식의 변수
+	//var display = (function() { alert('함수의 명령 실행'); });  //이렇게 ()를 쳐야 익명함수로서 처리 가능
+	
 	//alert("변수의 자료형 = "+typeof(display));	 //출력 : 변수의 자료형 = function
+	//익명함수를 선언하자마자 실행하려면 ()를 해야한다고 했음! 따라서 우선처리하도록 해야함.
 	//display();  //변수에 저장된 값이 함수가 아니므로 함수 호출이 불가하다.(display is not a function) => 에러발생
 	
 	//eval 함수를 사용하여 변수에 저장된 문자값을 실행
 	//=> 함수가 저장된 문자값(변수)은 자바스크립트 명령으로 변환되어 함수가 먼저 선언되므로 앞과 뒤에 ( ) 기호를 사용하여 우선처리한다.
 	//alert("변수의 자료형 = "+typeof(eval("("+display+")")));	//출력 : 변수의 자료형 = function
 	//eval("("+display+")")(); //문자값으로 저장(display(변수))된 함수를 eval 함수를 사용하여 선언한 후 직접 호출한 것.
+	//()를 쳐야 변수가 함수가 되어 우선처리연산자 명령으로 실행 할 수 있음.
 	eval(display)();
 
 	</script>

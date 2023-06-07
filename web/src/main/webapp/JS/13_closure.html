@@ -12,8 +12,7 @@
 	
 	<script type="text/javascript">
 	function outer(){
-		//내부함수 선언
-		function inner(){
+		function inner(){ 	//내부함수 선언
 			alert("내부함수의 명령 실행");
 		}
 		//inner(); //내부함수는 선언된 함수 내부에서만 호출 가능
@@ -41,8 +40,8 @@
 		}
 	}
 	
-	display("홍길동");
-	//display("임꺽정");
+	display("홍길동")();
+	//display("임꺽정")(); //첫번째 괄호 : 내부함수 반환./ 두번째 괄호: 내부함수 호출
 	</script>
 </body>
 </html>

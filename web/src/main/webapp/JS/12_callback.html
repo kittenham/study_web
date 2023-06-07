@@ -27,14 +27,14 @@
 	alert(display2);	//함수변수를 이용하여 함수 호출
 	
 	
-	function display(callack) {
-		alert(callback);
+	function display(callback) {
+		//alert(callback);//매개변수에 저장된 값 출력
 		
-		callback();
+		callback();//매개변수에 저장된 함수를 이용하여 함수 호출 - 콜백함수
 	}
 	
-	display(display1);	//함수명을 전달하여 함수 호출 - 매개변수에 함수 전달하여 저장
-	display(display2);	//
+	//display(display1);//함수명으로 매개변수에 선언함수를 전달하여 함수내부에서 호출
+	//display(display2);//함수변수에 매개변수에 익명함수를 전달하여 함수내부에서 호출
 	
 	
 	/*
