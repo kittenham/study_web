@@ -15,7 +15,7 @@
 	var student = new Object();  //Object 객체를 생성하여 변수에 저장 - Empty Object
 	alert(student); //[object Object] -클래스함수(대문자니까)
 	
-	//Object 객체에 요소 추가
+	//Object 객체에 요소 추가(프로퍼티 추가)
 	student.num=1000;	//객체 요소에 값을 저장 - 프로퍼티 추가
 	student.name="홍길동";
 	student.address="서울시 강남구";
@@ -23,7 +23,7 @@
 	//alert("학번 = "+student.num+". 이름 = "+student.name+", 주소 = "+student.address);
 	
 	
-	//Object 객체에 요소 추가
+	//Object 객체에 요소 추가(메소드 추가)
 	student.display=function(){
 		alert("학번 = "+this.num+". 이름 = "+this.name+", 주소 = "+this.address);
 	}		
@@ -47,7 +47,7 @@
 	}
 	
 	/*
-	//JSON을 사용하는 가장 큰 이유 : JSON을 이용하면 객체를 생성할 때 객체의 요소를 추가하여 초기화 처리가 가능하다.
+	//JSON을 사용하는 가장 큰 이유 : JSON을 이용하면 객체를 생성할 때 객체의 요소를 추가하여 초기화 처리가 가능하다(요소를 가진 object형태로 만들 수 있음).
 	//Object 객체만 사용하면 이렇게 못함
 	//형식) var 변수명 = {"요소명":값, "요소명":값, "요소명":함수, ...}
 	var student={"num":1000, "name":홍길동, "address":"서울시 강남구"
