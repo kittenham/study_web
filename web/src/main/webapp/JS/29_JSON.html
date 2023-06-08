@@ -16,7 +16,7 @@
 	
 	//Object 객체가 저장된 변수를 출력하면 자동으로 toString() 메소드 호출
 	//Object.toString(): 객체를 생성한 클래스를 함수명을 문자값으로 반환
-	alert("student = "+student);  //student = [object Object] >> Object 객체
+	alert("student = "+student);  //student = [object Object] >> object클래스의 Object 객체
 	
 	alert("학번 = "+student.num+", 이름 = "+student.name); //출력 : 학번 =1000, 이름 = 홍길동
 	
@@ -25,7 +25,7 @@
 	var str = JSON.stringify(student);
 	alert("변수의 자료형 = "+typeof(str)); //출력 : 변수의 자료형 = string
 	
-	//JSON.parse(string) : 매개변수로 전달받은 JSOn 형식의 문자값으로 자바스크립트 객체로 변환하여 반환하는 메소드
+	//JSON.parse(string) : 매개변수로 전달받은 JSON 형식의 문자값으로 자바스크립트 객체로 변환하여 반환하는 메소드
 	//=> REST 웹프로그램에 대한 응답결과를 JSON 형식의 문자값으로 제공받아 자바스크립트 객체로 변환하여 사용.
 	//JSON.parse(string) 대신 eval 함수 사용도 가능
 	var stu = JSON.parse(str);

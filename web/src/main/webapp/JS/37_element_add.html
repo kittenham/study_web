@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+</head>
+<body>
+	<h1>DOM(Document Object Model) - Element 객체 생성 및 Dom Tree 추가</h1>
+	<hr>
+	<div id="imageDiv"></div>
+	
+	<script type="text/javascript">
+/*	
+	//document.createElement(tagName) : 매개변수로 전달된 태그명의 Element 객체를 생성하여 반환하는 메소드
+	var h2E=document.createElement("h2");  //<h2></h2>
+	alert(h2E);	//출력 : [object HTMLHeadingElement]
+	
+	//document.createTextNode(content) : 매개변수로 전달된 태그내용이 저장된 Text 객체를 생성하여 반환하는 메소드
+	var h2T = document.createTextNode("h2 태그에 의해 출력되는 내용")
+	alert(h2T); //출력 : [object Text]
+	
+	//Node.appendChild(newNode) : 매개변수로 전달받은 Node(Element) 객체를 Node(Element) 
+	//객체의 자식으로 추가하는 메소드
+	h2E.appendChild(h2T);  //<h2>h2 태그에 의해 출력되는 내용</h2>
+	//여기는 저장만 된것. 출력은 X
+	//출력은 ▼ 여기서
+	//document.body : document 객체에서 body 태그를 자바스트립트 객체로 표현
+	// => DOM Tree에 새로운 태그를 추가하여 저장 >> 출력
+	document.body.appendChild(h2E);
+*/
+
+	var imgE=document.createElement("img");  //<img>
+	
+	//Element.attributeName : Element 객체에 프로퍼티를 추가하면 태그 속성을 추가하는 것과 동일한 기능을 수행한다.
+	imgE.src="images/Koala.jpg"; //<img src="iimages/Koala.jpg">와 같은 기능을 수행함.
+	
+	//Node.setAttribute(name, value) : Node(Element) 객체의 태그의 속성값을 변경하는 메소드
+	//=> 매개변수로 전달받은 속성이 없는 경우 속성 추가
+	//Node.setAttribute(name) : Node(Element) 객체의 태그의 속성값을 반환하는 메소드
+	//Node.removeAttr(attrName) : Node(Element) 객체의 태그의 속성을 삭제하는 메소드
+	imgE.setAttribute("width", 300);  //<img src="iimages/Koala.jpg" width="300">
+	
+	var divE = document.getElementById("imageDiv"); //<div id="imageDiv"></div>
+	divE.appendChild(imgE);
+	//출력되는 사진이 image.div의 자식으로 들어가 있는 것을 확인 할 수 있다.
+	
+	var hrE=document.createElement("hr");
+	//Node.insertBefore(newElement, before) : 기존 Node(Element) 객체 전에 새로운 Node(Element) 객체를 삽입하는 메소드
+	document.body.insertBefore(hrE, h2E);
+	</script>
+
+</body>
+</html>
