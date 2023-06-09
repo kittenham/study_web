@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style type="text/css">
+div{
+	border: 1px solid black;
+	padding: 30px;
+	text-align: center;
+}
+
+#red{ background: red; }
+#green{ background: green; }
+</style>
+</head>
+<body>
+	<h1>이벤트(Event) - </h1>
+	<hr>
+	<!-- 태그의 이벤트 리스너 속성값으로 다수의 이벤트 처리 함수 호출 가능 -->
+	<button type="button" onclick="eventHandleOne; eventHandleTwo;">이벤트버튼-1</button>
+	<button type="button" id="btn2">이벤트버튼-2</button>
+	<button type="button" id="btn3">이벤트버튼-3</button>
+	
+	<div id="red">
+		<div id="green"></div>
+	</div>
+	
+	<script type="text/javascript">
+	function eventHandleOne() {
+		alert("eventHandleOne 함수의 명령 실행");
+	}
+	
+	function eventHandleTwo() {
+		alert("eventHandleTwo 함수의 명령 실행");
+	}
+	
+	//Node(Element) 객체의 이벤트 리스너 속성에 이벤트 처리 함수를 등록하자.
+	document.getElementById("btn2").onclick=eventHandleOne;
+	document.getElementById("btn2").onclick=eventHandleTwo;
+	//결과 => eventHandleTwo 밖에 실행되지 않음.
+	//=>Node(Element) 객체의 이벤트 리스너 속성에는 하나의 이벤트 처리 함수만 등록이 가능한 것을 알 수 있다.(두개는 등록X)
+	//=>if, 여러개를 등록하고 싶다면, Node(Element) 객체로 addEventListener() 메소드를 호출하여 이벤트 처리 함수를 등록하면 된다.
+	document.getElementById("btn3").addEventListener("click", eventHandleOne);
+	document.getElementById("btn3").addEventListener("click", eventHandleTwo);
+	
+	document.getElementById("red").addEventListener("click", function() {
+		var ele=event.currentTarget; 
+			//event.currentTarget : 이벤트가 발생된 태그에 대한 Element 객체를 저장한 프로퍼티
+		alert("캡쳐링 단계 = "+ele.tagName+" 태그("+ele.getAttribute("id")+")에서 "+event.type+" 이벤트 발생");
+	}, true);
+	
+	document.getElementById("green").addEventListener("click", function() {
+		var ele=event.currentTarget; 
+		alert("버블링 단계 = "+ele.tagName+" 태그("+ele.getAttribute("id")+")에서 "+event.type+" 이벤트 발생");
+	}, false);
+	
+	document.getElementById("red").addEventListener("click", function() {
+		var ele=event.currentTarget; 
+		alert("버블링 단계 = "+ele.tagName+" 태그("+ele.getAttribute("id")+")에서 "+event.type+" 이벤트 발생");
+	}, false);
+	
+	</script>
+
+</body>
+</html>
