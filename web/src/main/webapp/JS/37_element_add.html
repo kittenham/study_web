@@ -27,6 +27,7 @@
 	//document.body : document 객체에서 body 태그를 자바스트립트 객체로 표현
 	// => DOM Tree에 새로운 태그를 추가하여 저장 >> 출력
 	document.body.appendChild(h2E);
+	//document의 body는 하나밖에 없기 때문에 get쓰지않고 그냥 appendChild 적으면됨.
 */
 
 	var imgE=document.createElement("img");  //<img>
@@ -47,6 +48,7 @@
 	var hrE=document.createElement("hr");
 	//Node.insertBefore(newElement, before) : 기존 Node(Element) 객체 전에 새로운 Node(Element) 객체를 삽입하는 메소드
 	document.body.insertBefore(hrE, h2E);
+	//insertBefore()는 자식이 아님.
 	</script>
 
 </body>
