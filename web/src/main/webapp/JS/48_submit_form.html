@@ -5,7 +5,7 @@
 <title>JavaScript</title>
 </head>
 <body>
-	<h1>form 태그 관련 이벤트 - 입력페이지</h1>
+	<h1>***(중요!!)form 태그 관련 이벤트 - 입력페이지</h1>
 	<hr>
 	<form action="48_submit_action.html" method="post" name="loginForm">
 	<table>
@@ -39,12 +39,12 @@
 			loginForm.id.focus();
 			//태그에서 발생되는 이벤트에 대한 기본 명령을 삭제
 			// => form 태그를 이용하여 웹프로그램을 요청하는 명령 취소 - form 태그 미실행
-			//event.preventDefault(); 
+			//event.preventDefault(); //onsubmit으로 이미 실행된 이벤트 명령을 삭제 할 수 있다.
 			//return;
 			
-			//이벤트 처리 함수에서 return 명령으로 [false]를 반환하면 이벤트 처리 함수를 
-			//종료하면서 태그의 기본 명령 제거 및 이벤트 전달 중지
-			return false;//form 태그 미실행
+			//이벤트 처리 함수에서 return 명령으로 [false]를 반환하면 "이벤트 처리 함수를 
+			//종료"하면서 "태그의 기본 명령 제거(취소) 및 이벤트 전달 중지"
+			return false;//form 태그 미실행 =>submit 이벤트가 계속 진행된다는 것.
 		}
 	
 		var idReg=/^[a-zA-Z]\w{5,19}$/g;

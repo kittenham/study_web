@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<!-- jQuery 라이브러리 안써주면 에러떨어지니까 꼭 써주기! -->
+</head>
+<body>
+	<h1>선택자(Selector)</h1>
+	<hr>
+	<h2 class="item">jQuery Selector-1</h2>
+	<h2 id="tag">jQuery Selector-2</h2>
+	<h2 class="item">jQuery Selector-3</h2>
+	<p>jQuery Selector-4</p>
+
+	<script type="text/javascript">
+	//태그 선택자 : 태그명으로 태그를 검색하여 제공
+	//=> 검색된 태그의 Node(Element) 객체로 jQuery 객체를 생성한 후 메소드를 호출할 수 있다.
+	//=> 다수의 태그가 검색된 경우 묵시적 반복에 의해 다수의 jQuery 객체가 생성되어 메소드를 호출 할 수 있다.
+	$("h2").css("background", "yellow"); //<h2>를 쓰는 코드가 3개 존재. => 3개 모두 묵시적 반복에 의해 알아서 제이쿼리 객체가 생성되어 메소드 호출=> 알아서 배경이 바뀜
+	//==>이때 $("h2") 는 jQuery 메소드, 엘리멘트 둘다 가능.
+	
+	//클래스 선택자 : 태그의 class 속성값으로 태그를 검색하여 제공
+	// => 태그 선택자와 구분하기 위해 .으로 시작됨.
+	$(".item").css("background", "orange");
+	
+	//id 선택자 : 태그의 id 속성값으로 태그를 검색하여 제공
+	// => 태그 선택자와 구분하기 위해 #으로 시작됨.
+	$("#tag").css("color", "blue");
+	
+	//메소드 체인(Method Chain) : 선택자로 검색된 태그의 jQuery 객체로 메소드를 순차적으로 호출 가능
+	//$("p").css("font-size","30px").css("color","red");
+	
+	//jQuery 객체로 메소드를 호출할 때 매개변수에 값 대신 Object 객체를 전달 가능(jQuery 메소드의 특징 중 하나임)
+	//Object 객체의 요소를 이용하여 메소드에 필요한 다수의 값을 전달.
+	//형식)) ({name:value, name:value}) 를 사용한다.
+	$("p").css({"font-size":"30px","color":"red"});
+
+	
+	</script>
+</body>
+</html>

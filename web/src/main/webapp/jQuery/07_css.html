@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<style type="text/css">
+#displayDiv{
+	margin: 20px;
+	padding: 10px;
+	color: red;
+	border: 1px solid bolck;
+	font-size: 1.2em;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<h1>css 메소드</h1>
+	<hr>
+	<div id="displayDiv">CSS 스타일 관련 메소드</div>
+	
+	<script type="text/javascript">
+	/*
+	//$(Selector).css(name) : 선택자로 검색된 태그의 CSS 스타일 속성값을 반환하는 메소드
+	//색깔은 무조건 RGB, 크기는 px 로 출력된다.
+	alert("margin 결과 = "+$("#displayDiv").css("margin"));
+	alert("padding 결과 = "+$("#displayDiv").css("padding"));
+	alert("color 결과 = "+$("#displayDiv").css("color")); //출력 : color 결과 = rgb(255, 0, 0)
+	alert("border 결과 = "+$("#displayDiv").css("border")); //출력 : border 결과 = 0px none rgb(255, 0, 0)
+	alert("font-size 결과 = "+$("#displayDiv").css("font-size")); //출력 : font-size 결과 = 19.2px
+	alert("font-size 결과 = "+$("#displayDiv").css("fontSize")); //출력 : font-size 결과 = 19.2px
+		//font-size와 fontSize는 출력결과값이 똑같지만, fontsize는 undefined로 나타난다.(대소문자 구분하기 때문)
+		//=> CSS 스타일 속성명을 자바스크립트의 카멜표기법으로 표현
+	alert("text-align 결과 = "+$("#displayDiv").css("text-align"));
+	alert("text-align 결과 = "+$("#displayDiv").css("textAlign"));
+	*/
+	
+	/*
+	//$(Selector).css(name, value) : 선택자로 검색된 태그의 CSS 스타일 속성값을 반환하는 메소드
+	//위의 것보다 밑의 것을 더 많이 사용함.
+	$("#displayDiv").css("width","50%");
+	$("#displayDiv").css("position","absolute");
+	$("#displayDiv").css("top","200px");
+	$("#displayDiv").css("left","100px");
+	*/
+	//검색된 태그의 CSS 스타일 속성값을 여러개 변경할 경우 CSS 메소드의 매개변수에 JSON 형식으로 표현된 Object 객체를 전달하여
+	//객체의 속성값으로 CSS 스타일의 속성값을 변경 가능하다.
+	$("#displayDiv").css({"width":"50%", "position":"absolute", "top":"200px", "left":"100px"});
+	
+	
+	
+	
+	</script>
+
+</body>
+</html>

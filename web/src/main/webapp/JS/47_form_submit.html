@@ -5,9 +5,9 @@
 <title>JavaScript</title>
 </head>
 <body>
-	<h1>form 태그 관련 이벤트 - 입력페이지</h1>
+	<h1>***(중요!!)form 태그 관련 이벤트 - 입력페이지</h1>
 	<hr>
-	<p>form 태그 : 사용자로부터 값을 입력받아 제출 이벤트(Submit Event)가 발생되면 
+	<p>***form 태그 : 사용자로부터 값을 입력받아 제출 이벤트(Submit Event)가 발생되면 
 		웹프로그램을 요청하여 입력값을 전달하는 태그</p>
 	<p>단순히 웹프로그램만 요청할거면 a태그를 사용하면 되지만 입력값까지 전달하기 위해서는 form태그를 사용해야한다.</p>
 	<p>form 태그는 반드시 사용자로부터 값을 입력받기 위한 입력태그와 
@@ -17,9 +17,11 @@
 	
 	<hr>
 	<form action="47_form_action.html" method="post" name="loginForm">
+	<!-- form 태그의 name 속성은 절대로 중복되면 안됨. -->
 		<table>
 			<tr>
 				<td>아이디</td>
+				<!-- 사용자로부터 값을 입력받기 위한 태그 => form action 페이지에 사용자 입력값을 전달하기 위해 -->
 				<td><input type="text" name="id"></td>
 			</tr>
 			<tr>
