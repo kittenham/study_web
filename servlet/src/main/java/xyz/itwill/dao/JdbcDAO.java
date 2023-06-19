@@ -11,10 +11,10 @@ import javax.sql.DataSource;
 
 import xyz.itwill.dto.GuestDTO;
 
-//JDBC 기능을 제공하는 DAO 클래스가 상속받아 사용하기 위해 작성된 클래스 - 추상클래스
-//상속만을 목적으로 만들어진 클래스이다.
-// =>
-
+//JDBC 기능을 제공하는 DAO 클래스가 상속받아 사용하기 위해 작성된 부모클래스 - 추상클래스
+//=> WAS 프로그램에 의해 관리되는 DataSource 객체를 제공받아 필드에 저장 - 정적영역에 작성하여 한번만 실행
+//=> DataSource 객체로부터 Connection 객체를 제공받아 반환하는 메소드
+//=> 매개변수로 전달받은 JDBC 관련 객체를 제거하는 메소드
 
 public class JdbcDAO {
 	private static DataSource dataSource;
@@ -28,7 +28,7 @@ public class JdbcDAO {
 	}
 
 	public Connection getConnection() throws SQLException{
-		return dataSource.getConnection(); //datasource에서 getConnection객체를 반환받아오는
+		return dataSource.getConnection(); //datasource에서 getConnection객체를 반환받아오는.
 	}
 	
 	public void close(Connection con) {

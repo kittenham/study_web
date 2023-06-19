@@ -65,7 +65,6 @@ public class StudentDisplayOldServlet extends HttpServlet {
 			out.println("<th width='300'>주소</th>");
 			out.println("<th width='250'>생년월일</th>");
 			out.println("</tr>");
-			out.println("</html>");
 			//ResultSet 객체에 저장된 모든 행의 컬럼값을 반환받아 클라이언트에게 전달 -> 반복처리
 			while (rs.next()) {
 				out.println("<tr>");
@@ -77,6 +76,7 @@ public class StudentDisplayOldServlet extends HttpServlet {
 			}
 			
 			out.println("</body>");
+			out.println("</html>");
 		} catch (ClassNotFoundException e) {
 			System.out.println("[에러] OracleDriver 클래스를 찾을 수 없습니다.");
 		} catch (SQLException e) {

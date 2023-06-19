@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import xyz.itwill.dao.StudentDAO;
 import xyz.itwill.dto.StudentDTO;
 
 
@@ -23,7 +24,7 @@ public class StudentDisplayNewServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		//STUDENT 테이블에 저장된 모든 학생정보를 검색하여 List 객체로 반환하는 DAO 클래스의 메소드 호출
-		List<StudentDTO> studentList=StudentDAO.getDAO().selectStudentList();
+		List<StudentDTO> studentList=StudentDAO.getDAO().selectStudentList(); //해석) StduentDAO의 삽입,변경,삭제,검색 메소드에서. DAO를 반환할거다. 검색리스트를. 
 		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
