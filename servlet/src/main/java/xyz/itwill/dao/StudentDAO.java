@@ -25,6 +25,7 @@ public class StudentDAO extends JdbcDAO {
 	static {
 		_dao=new StudentDAO();
 	}
+	//정적영역에 객체 생성 저장(딱 한번만 가능)
 	
 	public static StudentDAO getDAO() {
 		return _dao;
