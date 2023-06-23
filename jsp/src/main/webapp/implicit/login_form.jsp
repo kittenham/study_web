@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 로그인 처리에 필요한 인증정보(아이디와 비밀번호)를 입력받기 위한 JSP 문서 --%>
+<%-- 비로그인 상태의 사용자인 경우 사용자로부터 로그인 처리에 필요한 
+		인증정보(아이디와 비밀번호)를 입력받기 위한 JSP 문서 --%>
 <%-- => [로그인] 태그를 클릭한 경우 [login_action.jsp] 요청 - 입력값(인증정보) 전달 --%>
+<%-- 로그인 상태의 사용자인 경우 환영메세지를 전달하여 응답하는 JSP문서 --%>
 <%
+	//바인딩된 세션에서 권한 관련 정보가 저장된 객체를 반환받아 저장
+	String loginId=(String)session.getAttribute("loginId");
+
 	/*
 	//전달된 에러메세지를 반환받아 저장
 	String message=request.getParameter("message");
@@ -75,5 +80,6 @@
 		loginForm.submit();
 	}
 	</script>
+	<% %>
 </body>
 </html>
