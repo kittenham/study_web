@@ -12,6 +12,12 @@
 	if(worker==null) worker="main_page";
 	
 	String contentPath=group+"/"+worker+".jsp";
+	
+	/*
+	header_main.jsp페이지에 작성된 링크와 연결되어 index.jsp를 호출했을때 group과 worker를 함께 호출하는 명령. 
+	만약 둘다 값이 있을경우에는 header_main.jsp 페이지에 있는 링크대로 해당 페이지를 출력하지만,
+	group과 worker가 null 값일때는 main_page를 출력한다.
+	*/
 %>   
 <!DOCTYPE html>
 <html>

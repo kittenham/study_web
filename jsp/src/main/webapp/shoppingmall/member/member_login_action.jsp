@@ -1,0 +1,54 @@
+<%@page import="xyz.itwill.dao.MemberDAO"%>
+<%@page import="xyz.itwill.dto.MemberDTO"%>
+<%@page import="xyz.itwill.util.Utility"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 로그인에 성공하면 => 로그인정보를 전달받아 로그인 처리하고 [main/main_page.jsp] 문서를 요청하기 위한
+	 URL 주소를 전달하여 응답하는 JSP 문서 --%>
+<%-- 로그인 정보로 인증이 실패한 경우 => [main/main_page.jsp] 문서를 요청하여 다시 입력페이지로 갈 수 있도록 함. --%>
+
+<%
+	if(request.getMethod().equals("GET")){
+		response.sendRedirect(request.getContextPath()+"/index.jsp?error&worker=error_404");
+		return;
+	}
+
+	//전달값을 반환받아 저장
+	String id=request.getParameter("id");
+	String passwd=Utility.encrypt(request.getParameter("passwd"));
+	
+	
+	//인증처리
+	//아이디를 전달받아 MEMBER 테이블에 저장된 회원정보를 검색하여 DTO 객체로 반환하는 DAO 클래스의 메소드를 호출
+	MemberDTO member=MemberDAO.getDAO().selectMember(id);
+	
+	//1. 아이디 인증
+	if(member==null){ //검색된 회원정보가 없는 경우 => 아이디 인증 실패를 뜻함
+		response.sendRedirect(request.getContextPath()+"/index.jsp?error&worker=member_login.jsp");
+		return;
+	}
+	
+	//2. 비밀번호 인증
+	//검색된 회원번호의 비밀번호와 전달된 비밀번호를 비교했을때 다른 경우 => 비밀번호 인증 실패
+	/*
+	if(!member.getPasswd().equals(passwd)){
+		response.sendRedirect(request.getContextPath()+"/index.jsp?error&worker=member_join.jsp");
+		return;		
+	}
+	혹은 아래와 같이 쓸 수 있음.
+	*/
+	if(member==null||!member.getPasswd().equals(passwd)){
+		session.setAttribute("message", "아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+		session.setAttribute("id", id);
+		response.sendRedirect(request.getContextPath()+"/index.jsp?error&worker=member_login.jsp");
+		return;		
+	}
+	
+	//인증 성공 - 바인딩된 세션에 권한 관련 정보의 객체를 속성값으로 저장
+	session.setAttribute("loginMember", member);
+	
+	//페이지 이동
+	response.sendRedirect(request.getContextPath()+"/index.jsp?group=main&worker=main_page");
+
+	
+%>
