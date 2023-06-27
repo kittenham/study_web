@@ -11,7 +11,7 @@
 		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 		return;
 	}
-
+ 
 	//전달값을 반환받아 저장
 	String id=request.getParameter("id");
 	

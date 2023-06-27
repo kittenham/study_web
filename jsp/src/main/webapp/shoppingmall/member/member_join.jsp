@@ -52,8 +52,8 @@ legend {
 	color: white;
 }
 </style>
-<form id="join" action="<%=request.getContextPath() %>/member/member_join_action.jsp" method="post">
-<%-- 아이디 중복 검색 결과를 저장하기 위한 입력태그 --%>
+<form id="join" action="<%=request.getContextPath() %>/shoppingmall/member/member_join_action.jsp" method="post">
+<%-- 아이디 중복 검삭 결과를 저장하기 위한 입력태그 --%>
 <%-- => 0 : 아이디 중복 검사 미실행 또는 아이디 중복 - 아이디 사용 불가능 --%>
 <%-- => 1 : 아이디 중복 검사 실행 및 아이디 미중복 - 아이디 사용 가능 --%>
 <input type="hidden" id="idCheckResult" value="0">
@@ -222,7 +222,7 @@ $("#idCheck").click(function() {
 	}
 	
 	//팝업창을 실행하여 [id_check.jsp] 문서 요청
-	window.open("<%=request.getContextPath()%>/member/id_check.jsp?id="+$("#id").val()
+	window.open("<%=request.getContextPath()%>/shoppingmall/member/id_check.jsp?id="+$("#id").val()
 			,"idCheck", "width=450, height=130, left=700, top=400");
 });
 

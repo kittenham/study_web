@@ -3,12 +3,12 @@
 <%@page import="xyz.itwill.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 회원정보를 전달받아 MEMBER 테이블의 회원정보로 삽입하고 [member/member_login.jsp] 문서를
+<%-- 회원정보를 전달받아 MEMBER 테이블의 회원정보로 삽입하고 [/shoppingmall/member/member_login.jsp] 문서를
 요청하기 위한 URL 주소를 전달하여 응답하는 JSP 문서 --%>
 <%
 	if(request.getMethod().equals("GET")) {
 		//response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		response.sendRedirect(request.getContextPath()+"/index.jsp?group=error&worker=error_400");
+		response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400");
 		return;
 	}
 
@@ -41,5 +41,5 @@
 	MemberDAO.getDAO().insertMember(member);
 	
 	//페이지 이동
-	response.sendRedirect(request.getContextPath()+"/index.jsp?group=member&worker=member_login");
+	response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=member&worker=member_login");
 %>
