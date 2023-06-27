@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import xyz.itwill.dto.MemberDTO;
 import xyz.itwill.dto.StudentDTO;
 
 public class StudentDAO extends JdbcDAO{
@@ -161,4 +162,35 @@ public class StudentDAO extends JdbcDAO{
 		}
 		return studnetList;
 	}
+	
+	
+	//
+	public MemberDTO selectMember(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		MemberDTO member = null;
+		
+		try {
+			con=getConnection();
+			
+			String sql="select * from student order by no";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member=new.MemberDTO();
+				member.setId(rs.getString("id"));
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectStudentList() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return studnetList;
+	}
+	
+	
 }

@@ -49,12 +49,12 @@
 <%-- value 속성을 생략하면 JSP 문서 요청시 전달된 값을 반환받아 필드값을 변경한다.
 	 => 주의점) JSP 문서 요청시 전달된 값의 이름과 setProperty 태그의 property 속성값(객체 필드명)이
 	 	반드시 동일해야만 전달값을 반환받아 객체 필드값으로 변경된다.--%>
-<%-- 	 	
+<%--
 <jsp:setproperty name="hewon" property="name"/>
 <jsp:setproperty name="hewon" property="phone"/>
 <jsp:setproperty name="hewon" property="address"/>
 --%>
-<%-- setProperty 태그의 property 속성갑승ㄹ [*]로 설정한 경우 모든 전달값을 반환받아 필드값 변경할 수 있다. 
+<%-- setProperty 태그의 property 속성값을 [*]로 설정한 경우 모든 전달값을 반환받아 필드값 변경할 수 있다. 
 	 (자료형이 다른 경우 형변환도 해줌) => 간단하게 --%>
 <jsp:setProperty name="hewon" property="*">
 <%--
