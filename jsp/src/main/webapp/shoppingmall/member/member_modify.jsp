@@ -10,7 +10,7 @@
 <%
 	if(request.getMethod().equals("GET")) {
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;
 	}
@@ -22,7 +22,7 @@
 	if(!loginMember.getPasswd().equals(passwd)) {
 		session.setAttribute("message", "입력하신 비밀번호가 맞지 않습니다.");
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=member&worker=password_confirm&action=modify'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=member&worker=password_confirm&action=modify'");
 		out.println("</script>");
 		return;
 	}

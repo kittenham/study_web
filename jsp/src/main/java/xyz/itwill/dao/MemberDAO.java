@@ -137,8 +137,8 @@ public class MemberDAO extends JdbcDAO {
 		return rows;
 	}
 	
-	//아이디와 회원상태를 전달받아 MEMBER 테이블에 저장된 회원정보를 변경하고
-	public int modifyMember(MemberDTO member) {
+	//아이디와 회원상태를 전달받아 MEMBER 테이블에 저장된 회원정보의 회원상태를 변경하고 변경행의 갯수를 반환하는 메소드
+	public int updateMemberStatus(String id, int memberStatus) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		int rows=0;
@@ -147,12 +147,12 @@ public class MemberDAO extends JdbcDAO {
 			
 			String sql="update member set member_status=? where id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, member.getPasswd());
-
+			pstmt.setInt(1, memberStatus);
+			pstmt.setString(2, id);
 
 			rows=pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("[에러]updateMember() 메소드의 SQL 오류 = "+e.getMessage());
+			System.out.println("[에러]updateMemberStatus() 메소드의 SQL 오류 = "+e.getMessage());
 		} finally {
 			close(con, pstmt);
 		}
@@ -167,14 +167,14 @@ public class MemberDAO extends JdbcDAO {
 		String id=null;
 		try {
 			con=getConnection();
-
+			
 			String sql="select id from member where name=? and email=? and member_status!=0";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, member.getName());
 			pstmt.setString(2, member.getEmail());
-
+			
 			rs=pstmt.executeQuery();
-
+			
 			if(rs.next()) {
 				//id=rs.getString("id");
 				id=rs.getString(1);
@@ -187,19 +187,3 @@ public class MemberDAO extends JdbcDAO {
 		return id;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

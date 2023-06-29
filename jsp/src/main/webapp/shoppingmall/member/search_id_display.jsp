@@ -7,7 +7,7 @@
 <%
 	if(request.getMethod().equals("GET")) {
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;
 	}

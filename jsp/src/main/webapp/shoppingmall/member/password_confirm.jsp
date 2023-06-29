@@ -11,7 +11,7 @@
 	//전달값이 없거나 잘못된 경우 - 비정상적인 요청
 	if(action==null || !action.equals("modify") && !action.equals("remove")) {
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;
 	}
@@ -46,7 +46,7 @@ function submitCheck() {
 	
 	<%-- 전달값에 의해 form 태그로 요청하는 JSP 문서를 구분하여 실행 --%>
 	<% if(action.equals("modify")) {//[회원정보변경]인 경우 %>
-		passwordForm.action="<%=request.getContextPath()%>/index.jsp?group=member&worker=member_modify";
+		passwordForm.action="<%=request.getContextPath()%>/shoppingmall/index.jsp?group=member&worker=member_modify";
 	<% } else {//[회원탈퇴]인 경우 %>
 		passwordForm.action="<%=request.getContextPath()%>/shoppingmall/member/member_remove_action.jsp";
 	<% } %>

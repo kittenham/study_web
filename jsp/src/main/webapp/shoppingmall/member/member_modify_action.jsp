@@ -2,13 +2,13 @@
 <%@page import="xyz.itwill.util.Utility"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- 회원정보를 전달받아 MEMBER 테이블에 저장된 회원정보를 변경하고 [member/member_mypage.jsp]
+<%-- 회원정보를 전달받아 MEMBER 테이블에 저장된 회원정보를 변경하고 [/shoppingmall/member/member_mypage.jsp]
 문서를 요청하기 위한 URL 주소를 전달하여 응답하는 JSP 문서 --%>    
 <%-- => 로그인 상태의 사용자만 요청 가능한 JSP 문서 --%>
 <%@include file="/shoppingmall/security/login_check.jspf" %>
 <%
 	if(request.getMethod().equals("GET")) {
-		response.sendRedirect(request.getContextPath()+"/index.jsp?group=error&worker=error_400");
+		response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400");
 		return;
 	}
 
@@ -51,7 +51,7 @@
 	session.setAttribute("loginMember", MemberDAO.getDAO().selectMember(id));
 	
 	//페이지 이동
-	response.sendRedirect(request.getContextPath()+"/index.jsp?group=member&worker=member_mypage");
+	response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=member&worker=member_mypage");
 %>
 
 

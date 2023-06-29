@@ -11,7 +11,7 @@ MEMBER 테이블에 저장된 회원정보의 회원상태를 [0]으로 변경�
 <%
 	if(request.getMethod().equals("GET")) {
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;
 	}
@@ -23,7 +23,7 @@ MEMBER 테이블에 저장된 회원정보의 회원상태를 [0]으로 변경�
 	if(!loginMember.getPasswd().equals(passwd)) {
 		session.setAttribute("message", "입력하신 비밀번호가 맞지 않습니다.");
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=member&worker=password_confirm&action=remove'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=member&worker=password_confirm&action=remove'");
 		out.println("</script>");
 		return;
 	}
@@ -35,5 +35,5 @@ MEMBER 테이블에 저장된 회원정보의 회원상태를 [0]으로 변경�
 	session.invalidate();
 	
 	//페이지 이동	
-	response.sendRedirect(request.getContextPath()+"/index.jsp?group=member&worker=member_remove");
+	response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=member&worker=member_remove");
 %>
