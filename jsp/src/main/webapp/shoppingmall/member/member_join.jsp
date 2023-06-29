@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 회원정보를 입력받기 위한 JSP 문서 --%>
-<%-- => [회원가입] 태그를 클릭한 경우 [member/member_join_action.jsp] 문서 요청 - 입력값(회원정보) 전달 --%>
+<%-- => [회원가입] 태그를 클릭한 경우 [shoppingmall/member/member_join_action.jsp] 문서 요청 - 입력값(회원정보) 전달 --%>
 <%-- => [아이디 중복 검사] 태그를 클릭한 경우 팝업창을 실행하여 [id_check.jsp] 문서 요청 - 아이디 전달 --%>    
 <%-- => [우편번호] 태그를 클릭한 경우 Daum 우편번호 서비스(JavaScript)를 사용하여 입력태그에 입력값으로 사용 --%>    
 <style type="text/css">
@@ -52,7 +52,9 @@ legend {
 	color: white;
 }
 </style>
+
 <form id="join" action="<%=request.getContextPath() %>/shoppingmall/member/member_join_action.jsp" method="post">
+
 <%-- 아이디 중복 검삭 결과를 저장하기 위한 입력태그 --%>
 <%-- => 0 : 아이디 중복 검사 미실행 또는 아이디 중복 - 아이디 사용 불가능 --%>
 <%-- => 1 : 아이디 중복 검사 실행 및 아이디 미중복 - 아이디 사용 가능 --%>
@@ -174,7 +176,7 @@ $("#join").submit(function() {
 	if($("#email").val()=="") {
 		$("#emailMsg").css("display","block");
 		submitResult=false;
-	} else if(!emailReg.test($("#email").val())) {
+	} else if(!emailReg.test($("#email").val())) { //이메일의 형식이 잘못됐을때
 		$("#emailRegMsg").css("display","block");
 		submitResult=false;
 	}
@@ -204,7 +206,7 @@ $("#join").submit(function() {
 		submitResult=false;
 	}
 	
-	return submitResult;
+	return submitResult; //이벤트를 취소할 수 있도록
 });
 
 $("#idCheck").click(function() {
@@ -232,7 +234,7 @@ $("#id").change(function() {
 	$("#idCheckResult").val("0");
 });
 
-$("#postSearch").click(function() {
+$("#postSearch").click(function() { //우편번호로 주소 검색하기
     new daum.Postcode({
         oncomplete: function(data) {
         	$("#zipcode").val(data.zonecode);

@@ -5,6 +5,8 @@
 <%-- => 템플릿 페이지의 몸체부에는 클라이언트 요청에 의해 전달된 값을 이용하여 JSP 문서의 실행
 결과를 제공받아 포함 --%>
 <%
+	request.setCharacterEncoding("utf-8");
+
 	String group=request.getParameter("group");
 	if(group==null) group="main";
 	
@@ -12,6 +14,11 @@
 	if(worker==null) worker="main_page";
 	
 	String contentPath=group+"/"+worker+".jsp";
+	
+	String headerPath="header_main.jsp";
+	if(group.equals("admin")) {
+		headerPath="header_admin.jsp";
+	}
 %>   
 <!DOCTYPE html>
 <html>

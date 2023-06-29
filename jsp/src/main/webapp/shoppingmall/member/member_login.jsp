@@ -3,6 +3,12 @@
 <%-- 사용자로부터 로그인정보(아이디와 비밀번호)를 입력받기 위한 JSP 문서 --%>
 <%-- => [로그인] 태그를 클릭한 경우 [member/member_login_action.jsp] 문서를 요청하여 이동 - 입력값(로그인정보) 전달 --%>
 <%
+	//전달값(로그인 후 요청할 JSP 문서의 URL 주소)을 반환받아 저장
+	String returnUrl=request.getParameter("returnUrl");
+	if(returnUrl==null) {
+		returnUrl="";
+	}
+
 	//인증 실패시 세션에 저장되어 제공된 속성값을 객체로 반환받아 사용
 	// => [member_login.jsp] 문서에서만 사용 가능하도록 속성값을 객체로 반환받은 후 반드시 삭제 
 	String message=(String)session.getAttribute("message");
@@ -28,18 +34,18 @@
 	width: 300px;
 }    
 
-#login label {
+#loginForm label {
 	text-align: right;
 	width: 100px;
 	float: left;
 }
 
-#login ul li {
+#loginForm ul li {
 	list-style-type: none;
 	margin-bottom: 10px;
 }
 
-#login input:focus {
+#loginForm input:focus {
 	border: 2px solid aqua;
 }
 
@@ -71,7 +77,8 @@ a:hover {
 }
 </style>
 <div id="space"></div>
-<form id="login" name="loginForm" action="<%=request.getContextPath() %>/shoppingmall/member/member_login_action.jsp" method="post">
+<form id="loginForm" name="loginForm" action="<%=request.getContextPath() %>/shoppingmall/member/member_login_action.jsp" method="post">
+	<input type="hidden" name="returnUrl" value="<%=returnUrl%>">
 	<ul class="login_tag">
 		<li>
 			<label for="id">아이디</label>
@@ -84,7 +91,7 @@ a:hover {
 	</ul>
 	<div id="login_btn">로그인</div>
 	<div id="search">
-		<a href="#">아이디 찾기</a> |
+		<a href="<%=request.getContextPath() %>/index.jsp?group=member&worker=search_id">아이디 찾기</a> |
 		<a href="#">비밀번호 찾기</a> 
 	</div>
 	<div id="message"><%=message %></div>
@@ -105,7 +112,7 @@ $("#login_btn").click(function() {
 		return;
 	}
 	
-	$("#login").submit();
+	$("#loginForm").submit();
 });
 
 </script>

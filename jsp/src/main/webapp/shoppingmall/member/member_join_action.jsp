@@ -8,7 +8,7 @@
 <%
 	if(request.getMethod().equals("GET")) {
 		//response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		response.sendRedirect(request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400");
+		response.sendRedirect(request.getContextPath()+"/index.jsp?group=error&worker=error_400");
 		return;
 	}
 
