@@ -1,8 +1,8 @@
 package xyz.itwill.dto;
 
 /*
- * create table review(num number primary key, id varchar2(30), subject VARCHAR2(500), content VARCHAR2(4000),
-    regdate date, readcount number, ref number(4), restep number(4), relevel number(4),
+ * create table review(num number primary key, reviewId varchar2(30), subject VARCHAR2(500), content VARCHAR2(4000),
+ * reviewImg varchar2(100), regdate date, readcount number, ref number(4), restep number(4), relevel number(4),
     ip VARCHAR2(20), status number(1));
     create sequence review_seq; 
 */
@@ -11,9 +11,10 @@ package xyz.itwill.dto;
 이름        널?       유형             
 --------- -------- -------------- 
 NUM       NOT NULL NUMBER         - 글번호
-ID                 VARCHAR2(30)   - 작성자(아이디)
+REVIEWID           VARCHAR2(30)   - 작성자(아이디)
 SUBJECT            VARCHAR2(500)  - 제목
 CONTENT            VARCHAR2(4000) - 내용
+REVIEWIMG          VARCHAR2(100)  - 이미지파일
 REGDATE            DATE           - 작성날짜
 READCOUNT          NUMBER         - 조회수
 REF                NUMBER(4)      - 글그룹(답글)
@@ -25,10 +26,11 @@ STATUS             NUMBER(1)      - 게시글 상태 : 0(삭제글), 1(일반글
 
 public class ReviewDTO {
 	private int num;
-	private String id;
+	private String reviewid;
 	private String name; //Member테이블의 회원이름을 저장하기 위한 필드 -> join을 위해 만든 것이다.
 	private String subject;
 	private String content;
+	private String reviewimg;
 	private String regdate;
 	private int readcount;
 	private int ref;
@@ -41,14 +43,15 @@ public class ReviewDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ReviewDTO(int num, String id, String writer, String subject, String content, String regdate, int readcount,
-			int ref, int restep, int relevel, String ip, int status) {
+	public ReviewDTO(int num, String reviewid, String name, String subject, String content, String reviewimg,
+			String regdate, int readcount, int ref, int restep, int relevel, String ip, int status) {
 		super();
 		this.num = num;
-		this.id = id;
+		this.reviewid = reviewid;
 		this.name = name;
 		this.subject = subject;
 		this.content = content;
+		this.reviewimg = reviewimg;
 		this.regdate = regdate;
 		this.readcount = readcount;
 		this.ref = ref;
@@ -57,7 +60,7 @@ public class ReviewDTO {
 		this.ip = ip;
 		this.status = status;
 	}
-	
+
 	public int getNum() {
 		return num;
 	}
@@ -66,14 +69,14 @@ public class ReviewDTO {
 		this.num = num;
 	}
 
-	public String getId() {
-		return id;
+	public String getReviewid() {
+		return reviewid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setReviewid(String reviewid) {
+		this.reviewid = reviewid;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -96,6 +99,14 @@ public class ReviewDTO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getReviewimg() {
+		return reviewimg;
+	}
+
+	public void setReviewimg(String reviewimg) {
+		this.reviewimg = reviewimg;
 	}
 
 	public String getRegdate() {
@@ -154,5 +165,5 @@ public class ReviewDTO {
 		this.status = status;
 	}
 	
-	
+
 }
