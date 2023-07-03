@@ -19,13 +19,14 @@
 
 	//전달파일을 저장할 서버 디렉토리(웹자원)의 파일 시스템 경로를 반환받아 저장
 	//String saveDirectory=application.getRealPath("/review_images");
-	String saveDirectory=request.getServletContext().getRealPath("/shoppingmall/review_images");
+	String saveDirectory=request.getServletContext().getRealPath("/shoppingmall/review_images"); //아파치-톰캣의 디렉터리 경로임.(이클립스 디렉터리경로아님.)
 	//System.out.println("saveDirectory = "+saveDirectory);
 
 	//MultipartRequest 객체 생성 - 모든 전달파일을 서버 디렉토리에 업로드 처리하여 저장
 	// => cos.jar 라이브러리 파일을 프로젝트에 반드시 빌드 처리
 	MultipartRequest multipartRequest=new MultipartRequest(request, saveDirectory
 			, 20*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+	//(요청, 파일을 저장할 경로 디렉터리, 용량, 전달 캐릭터셋, 파일의 이름이 중복될 경우 파일의 이름을 변경하도록하는 명령)
 
 	//전달값을 반환받아 저장
 	int ref=Integer.parseInt(multipartRequest.getParameter("ref"));
@@ -38,7 +39,8 @@
 		status=Integer.parseInt(multipartRequest.getParameter("secret"));
 	}
 	String content=multipartRequest.getParameter("content");
-	//업로드 처리된 파일명을 반환받아 저장
+	
+	//업로드 처리된 파일명을 반환받아 저장 (getFilesystemName()) != 입력받은 파일명 반환메소드는 또 다름
 	String reviewimg=multipartRequest.getFilesystemName("reviewimg");
 	
 	//REVIEW_SEQ 시퀸스의 다음값을 검색하여 반환하는 DAO 클래스의 메소드 호출
