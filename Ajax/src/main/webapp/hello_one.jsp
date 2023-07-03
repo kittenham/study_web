@@ -93,10 +93,24 @@
 			alert("응답 완료 상태");
 		}
 		*/
+		
 		//가장 중요한 것은 응답 완료 상태일때임.
+		//5. 실행결과를 응답받아 페이지의 태그를 조작 - DHTML
 		if(xhr.readyState==4){
-			
+			//XMLHttpRequest.status : 웹프로그램 요청에 대한 응답의 상태 코드(StatusCode)를 저장한 
+			if(xhr.status==200){ //웹프로그램 요청에 대한 정상적인 실행결과를 받은경우
+				//XMLHttpRequest.responseText : 웹프로그램 요청에 대한 실행결과를 TEXT 또는 HTML로 응답받은 경우 결과를 저장한 프로퍼티
+				document.getElementById("display").innerHTML=xhr.responseText;
+			} else { //웹프로그램 요청에 대한 비정상적인 실행결과를 받은 경우 - 에러코드(4XX 또는 5XX)
+				alert("에러코드 = "+xhr.status);
+			}
+		} else{
+			document.getElementById("display").innerHTML="<img src='images/loading.gif' width='50'>";
 		}
+	}
+	
+	document.getElementById("btn2").onclick=function(){
+		document.getElementById("display").style="background: green;";
 	}
 	
 	
