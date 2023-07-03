@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ajax</title>
+<title>AJAX</title>
 <style type="text/css">
-
+#display {
+	width: 50%;
+	padding: 5px;
+	margin: 10px;
+	font-size: 30px;
+	border: 1px solid red;
+}
 </style>
 </head>
 <body>
@@ -16,13 +22,13 @@
 	<hr>
 	<div>
 		<button type="button" id="btn1">번역하기</button>
-		<button type="button" id="btn1">배경색 변경</button>
+		<button type="button" id="btn2">배경색 변경</button>
 	</div>
 	
 	<script type="text/javascript">
 	/* 
 	//검색된 태그의 Element 객체로 반환받아 Click 이벤트가 발생되면 호출되는 이벤트 처리 함수 등록
-	document.getElementById("btn1").onclick=Function(){
+	document.getElementById("btn1").onclick=function(){
 		//페이지에서 검색된 태그를 Element 객체로 반환받아 태그의 내용을 변경 처리 - DHTML
 		// => 현재 요청 웹프로그램의 실행결과를 이용하여 페이지의 태그 변경
 		document.getElementById("display").innerHTML="안녕하세요. 에이젝스!!!";
@@ -38,7 +44,7 @@
 	//var xhr = new XMLHttpRequest(); => 위의 코드가 아니라 이렇게 해도 되지만 아래애서 객체 생성을 하므로 일단 이건 생략
 	
 	//페이지에서 검색된 태그를 Element 객체로 반환받아 Click 이벤트가 발생될 경우호출될 이벤트
-	document.getElementById("btn1").onclick=Function(){
+	document.getElementById("btn1").onclick=function(){
 		//AJAX 기능을 이용하여 응답결과를 제공받아 페이지의 태그변경
 		// => XMLHttpRequest 객체를 사용하여 비동기식으로 웹프로그램을 요청하여 실행결과를
 		//	  HTML 또는 XML로 응답받아 페이지의 태그를 변경 처리한다.
@@ -64,7 +70,7 @@
 		//			- 주의) 현재 서버에 존재하는 웹프로그램만 요청이 가능하다. 다른서버에 있는 웹프로그램을 요청하려면 다른 방법을 이용해야 한다.(ex. java이용)
 		// => async : false 또는 true 중 하나를 전달
 		xhr.open("get", "hello_two.jsp", "true"); //비동기식 통신(요청과 응답) : 요청에 대한 응답 기다림이 발생하지 않음.(다른작업이 가능하다.)
-		xhr.open("get", "hello_two.jsp", "flase"); //동기식 통신(요청과 응답) : 요청에 대한 응답 기다림이 발생함.(다른 작업이 불가능하다. 응답기다림때문에 기다려야되니까.)
+		//xhr.open("get", "hello_two.jsp", "flase"); //동기식 통신(요청과 응답) : 요청에 대한 응답 기다림이 발생함.(다른 작업이 불가능하다. 응답기다림때문에 기다려야되니까.)
 		
 		//4. XMLHttpRequest 객체로 send() 메소드를 호출한다. -> 호출하면 준비상태가 [2]로 변경된다.
 		//XMLHttpRequest.sned(data) : XMLHttpRequest 객체로 웹프로그램을 요청하기 위한 메소드
