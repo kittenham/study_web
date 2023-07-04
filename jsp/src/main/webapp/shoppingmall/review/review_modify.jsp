@@ -7,11 +7,11 @@
 <%-- => 로그인 상태의 사용자 중 게시글 작성자이거나 관리자인 경우에만 요청 가능한 JSP 문서 --%>
 <%-- => [글변경] 태그를 클릭한 경우 [review/remove_modify_action.jsp] 문서 요청 - 입력값(게시글) 전달 --%>    
 <%-- 비로그인 상태의 사용자가 JSP 문서를 요청할 경우 에러페이지로 이동하여 응답 처리 --%>
-<%@include file="/security/login_check.jspf"%>
+<%@include file="/shoppingmall/security/login_check.jspf"%>
 <%
 	if(request.getParameter("num")==null) {//전달값이 없는 경우 - 비정상적인 요청
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;		
 	}
@@ -27,7 +27,7 @@
 	
 	if(review==null) {//검색된 게시글이 없는 경우 - 비정상적인 요청
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;	
 	}
@@ -35,7 +35,7 @@
 	//로그인 상태의 사용자가 게시글 작성자 및 관리자가 아닌 경우 - 비정상적인 요청
 	if(!loginMember.getId().equals(review.getReviewid()) && loginMember.getMemberStatus()!=9) {
 		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/index.jsp?group=error&worker=error_400'");
+		out.println("location.href='"+request.getContextPath()+"/shoppingmall/index.jsp?group=error&worker=error_400'");
 		out.println("</script>");
 		return;
 	}

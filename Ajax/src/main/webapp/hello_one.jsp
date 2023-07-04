@@ -76,7 +76,7 @@
 		//XMLHttpRequest.sned(data) : XMLHttpRequest 객체로 웹프로그램을 요청하기 위한 메소드
 		// => data : 웹프로그램 요청시 전달값을 [이름=값&이름=값&...] 형식으로 전달한다.
 		// => 리퀘스트 메세지 몸체부에 값을 저장하여 전달한다.
-		// => 전달값이 없거나 GET 방식으로 요청한 경우 data 매개변수에는 null을 전달한다.
+		// => 전달값이 없거나 GET 방식(request 몸체부를 쓰지 않기 때문에)으로 요청한 경우 data 매개변수에는 null을 전달한다.
 		xhr.send(null); //웹프로그램 요청 후 준비상태가 [3]과 [4]로 자동변경된다.
 	}
 	
@@ -92,12 +92,13 @@
 		} else if (xhr.readyState==4) {
 			alert("응답 완료 상태");
 		}
+		//가장 중요한 것은 응답 완료 상태일때임. 1,2,3 상태는 대기상태라 상대적으로 별로 중요하지 않음.
 		*/
 		
-		//가장 중요한 것은 응답 완료 상태일때임.
+		
 		//5. 실행결과를 응답받아 페이지의 태그를 조작 - DHTML
 		if(xhr.readyState==4){
-			//XMLHttpRequest.status : 웹프로그램 요청에 대한 응답의 상태 코드(StatusCode)를 저장한 
+			//XMLHttpRequest.status : 웹프로그램 요청에 대한 응답의 상태 코드(StatusCode)를 저장한 프로퍼티 
 			if(xhr.status==200){ //웹프로그램 요청에 대한 정상적인 실행결과를 받은경우
 				//XMLHttpRequest.responseText : 웹프로그램 요청에 대한 실행결과를 TEXT 또는 HTML로 응답받은 경우 결과를 저장한 프로퍼티
 				document.getElementById("display").innerHTML=xhr.responseText;

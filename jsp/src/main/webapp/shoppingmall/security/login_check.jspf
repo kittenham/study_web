@@ -4,6 +4,8 @@
 <%-- 비로그인 상태의 사용자가 JSP 문서를 요청한 경우 에러메세지를 출력하기 위한 JSP 문서로
 이동하도록 URL 주소를 전달하여 응답하는 소스코드를 저장한 JSPF 파일 --%>
 <%-- => include Directive에서 사용하기 위한 파일 --%>    
+<%-- 사용할 페이지의 문서에서 <%@include file="아이디 체크 링크"%>를 넣어 사용함. --%>
+
 <%
 	MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
 
