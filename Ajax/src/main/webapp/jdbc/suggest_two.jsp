@@ -23,7 +23,7 @@
 	<data><![CDATA[
 		[
 		<% for(int i=0;i<suggestList.size();i++) { %>
-			<% if(i>0) { %>,<% } %>
+			<% if(i>0) { %>,<% } %> <%--객체를 받아올때 값 사이사이에 ,(콤마)를 넣기 위해서 사용된 조건문--%>
 			{"word":"<%=suggestList.get(i).getWord()%>","url":"<%=suggestList.get(i).getUrl()%>"}
 		<% } %>
 		]
