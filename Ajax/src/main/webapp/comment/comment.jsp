@@ -295,7 +295,7 @@ h1 {
 			dataType: "json",
 			success: function(result) {
 				if(result.code=="success") {
-					displayComment();
+					displayComment(); //새로고침 시키는 메소드.
 					init();
 				} else {
 					alert("댓글 변경 실패");
@@ -327,10 +327,28 @@ h1 {
 	//[comment_remove.jsp] 문서를 AJAX 기능으로 요청하고 실행결과를 JSON 데이타로 응답받아 처리
 	$("#remove_btn").click(function() {
 		var num=$("#remove_num").val();
-	})
+		
+		$.ajax({
+			type:"get",
+			url:"comment_remove.jsp",
+			data:{"num":num},
+			dataType:"json",
+			success: function(result) {
+				if(result.code=="success") {
+					init();
+					displayComment(); //새로고침 시키는 메소드.
+				} else {
+					alert("댓글 삭제 실패");
+				}
+			},
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});
+	});
 	
 	//댓글삭제태그에서 [취소] 태그를 클릭한 경우 호출되는 이벤트 처리 함수 등록
-	
+	$("#remove_cancel_btn").click(init);
 	
 	</script>
 </body>
