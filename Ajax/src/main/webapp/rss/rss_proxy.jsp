@@ -46,7 +46,7 @@
 			out.println(result);
 		}
 	} finally {
-		//가상의 브라우저를 사용하여 접속된 웹서버의 연결 해제
+		//가상의 브라우저를 사용하여 접속된 웹서버의 연결 해제 -> 연결을 끊어줘야함. 계속 연결되면 안됨.
 		//Method.releaseConnection() : 웹서버 접속을 해제하는 메소드
 		if(method!=null) method.releaseConnection();
 	}

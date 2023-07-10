@@ -6,6 +6,7 @@
 	//리스폰즈 메세지 헤더에 [Access-Control-Allow-origin] 속성을 HttpXMLRequest 객체로
 	//접속 가능한 서버로 속성값으로 변경하면 AJAX 기능으로 요청 가능한 웹프로그램으로 사용
 	response.setHeader("Access-Control-Allow-origin", "http://localhost:8000");
+		//얘를 쓰지 않으면 AJAX 기능으로 요청 가능한 웹프로그램으로 사용불가능.
 %>
 <books>
 	<book>

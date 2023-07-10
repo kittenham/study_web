@@ -14,7 +14,7 @@
 	String password=request.getParameter("password");
     //아이디랑 비번은 한글이 아니라 request.setencoding안해도 됨~~
 	
-	UserinfoDTO userinfo=UserinfoModelOneDAO.getDAO().selectUserinfo(userid);
+	UserinfoDTO userinfo=UserinfoModelOneDAO.getDAO().selectUserinfo(userid); //인증처리
 	if(userinfo==null || !userinfo.getPassword().equals(password)) {//인증 실패
 		session.setAttribute("message", "입력된 아이디가 잘못 되었거나 비밀번호가 맞지 않습니다.");
 		session.setAttribute("userid", userid);

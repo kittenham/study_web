@@ -2,29 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 사용자로부터 회원정보를 입력받기 위한 JSP 문서 --%>
-<%-- => [회원등록] 태그를 클릭한 경우 [user_write_action.jsp] 문서 요청 - 입력값(회원정보) 전달 --%>
-<%-- => [로그인] 태그를 클릭한 경우 [user_login.jsp] 문서 요청 --%>
+<%-- => [회원등록] 태그를 클릭한 경우 [write.do] 페이지 요청 - 입력값(회원정보) 전달 --%>
+<%-- => [로그인] 태그를 클릭한 경우 [loginform.do] 문서 요청 --%>
 <%
-	UserinfoDTO loginUserinfo=(UserinfoDTO)session.getAttribute("loginUserinfo");
-
-
-	/*	
-	//비로그인 상태의 사용자이거나 로그인 사용자가 관리자가 아닌 경우 - 비정상적인 요청
-	// !!! 회원가입할때는 얘를 없애야 회원가입이 가능함 !!!
-		//관리자 id:abc123, pw:qwe123! 가입했음
-	if(loginUserinfo==null || loginUserinfo.getStatus()!=9) {
-		response.sendRedirect("user_error.jsp");
-		return;
-	}
-	*/
-	String message=(String)session.getAttribute("message");
+	String message=(String)request.getAttribute("message");
 	if(message==null) {
 		message="";
-	} else {
-		session.removeAttribute("message");
 	}
 	
-	UserinfoDTO userinfo=(UserinfoDTO)session.getAttribute("userinfo");
+	UserinfoDTO userinfo=(UserinfoDTO)request.getAttribute("userinfo");
 	if(userinfo==null) {
 		userinfo=new UserinfoDTO();
 		userinfo.setUserid("");
@@ -32,8 +18,6 @@
 		userinfo.setName("");
 		userinfo.setEmail("");
 		userinfo.setStatus(1);
-	} else {
-		session.removeAttribute("userinfo");
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,7 +25,7 @@
 <head>
 <title>MVC</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel=stylesheet href="css/user.css" type="text/css">
+<link rel=stylesheet href="<%=request.getContextPath() %>/model_two/css/user.css" type="text/css">
 <script language="JavaScript">
 function userCreate() {
 	if ( f.userid.value == "" ) {
@@ -60,7 +44,7 @@ function userCreate() {
 		return;
 	}
 	
-	f.action = "user_write_action.jsp";
+	f.action = "<%=request.getContextPath() %>/write.do";
 	f.submit();
 }
 </script>
@@ -125,7 +109,7 @@ function userCreate() {
 		  <tr>
 			<td align=center>
 				<input type="button" value="회원등록" onClick="userCreate();">
-				<input type="button" value="로그인" onClick="location.href='user_login.jsp';">
+				<input type="button" value="로그인" onClick="location.href='<%=request.getContextPath()%>/loginform.do';">
 			</td>
 		  </tr>
 	  </table>
