@@ -1,8 +1,6 @@
 <%@page import="xyz.itwill.dto.UserinfoDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- mvc 모델2에서는 서블릿을 요청해야하므로 jsp문서가 아닌 서블릿을 요청해야하기 때문에 /XXX.do 페이지를 요청해야함. --%>
-
 <%-- 비로그인 상태의 사용자인 경우 - 사용자로부터 로그인정보를 입력받기 위한 JSP 문서 --%>
 <%-- => [로그인] 태그를 클릭한 경우 [/login.do] 페이지 요청 - 입력값 전달 --%>
 <%-- 로그인 상태의 사용자인 경우 - 환영메세지를 클라이언트에게 전달하여 응답하는 JSP 문서 --%>
@@ -12,20 +10,16 @@
 <%
 	UserinfoDTO loginUserinfo=(UserinfoDTO)session.getAttribute("loginUserinfo");
 
-	String message=(String)session.getAttribute("message");
+	String message=(String)request.getAttribute("message");
 	if(message==null) {
 		message="";
-	} else {
-		session.removeAttribute("message");
 	}
 	
-	String userid=(String)session.getAttribute("userid");
+	String userid=(String)request.getAttribute("userid");
 	if(userid==null) {
 		userid="";
-	} else {
-		session.removeAttribute("userid");
 	}
-%>
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
