@@ -25,6 +25,7 @@
 	<%-- => EL 표현식에서 pageContext 내장객체로 JSP의 pageContext 내장객체의 메소드 호출 가능 --%>
 	<%-- <p>컨텍스트 경로 = ${pageContext.getRequest().getContextPath() }</p> --%>
 	<%-- EL 표현식에서 Getter 메소드는 필드명을 이용하여 자동 호출 가능 --%>
+	<%-- JSP에서 웹자원 경로 표현할때 절대경로를 사용해야하며 그때 아래와 같이 사용한다. --%>
 	<p>컨텍스트 경로 = ${pageContext.request.contextPath }</p>
 	<p>요청 URI 주소 = ${pageContext.request.requestURI }</p>
 </body>

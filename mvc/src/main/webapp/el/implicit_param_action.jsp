@@ -14,7 +14,7 @@
 <body>
 	<h1>EL 내장객체 - Request Parameter</h1>
 	<hr>
-	<h2>EL 미사용</h2>
+	<h2>EL 미사용  - POST 방식으로 요청하는 방법</h2>
 	<ul>
 		<li>이름 = <%=request.getParameter("name") %></li>
 		<li>주소 = <%=request.getParameter("address") %></li>
