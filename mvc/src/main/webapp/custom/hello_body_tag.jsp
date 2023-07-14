@@ -16,8 +16,8 @@
 		String name="전우치";
 		request.setAttribute("name", name);
 	%>
-	<simple:helloBody test="true"><%=name %></simple:helloBody> <%-- JSP Expression 사용 가능 --%>
-	<simple:helloBody test="false">${name }</simple:helloBody>	<%-- EL 사용 가능--%>
+	<simple:helloBody test="true"><%=name %></simple:helloBody> <%-- JSP Expression 사용 가능. 이때의 name은 변수 --%>
+	<simple:helloBody test="false">${name }</simple:helloBody>	<%-- EL 사용 가능. 이때의 name은 변수가 아니라 속성값--%>
 	
 	<hr>
 	

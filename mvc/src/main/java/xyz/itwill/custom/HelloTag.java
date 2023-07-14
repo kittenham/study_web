@@ -16,7 +16,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 public class HelloTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
 
-	//JSP 문서에서 커스텀 태그를 최초로 사용할 경우 태그 클래스를 객체로 생성하기 위한 한번만 호출
+	//JSP 문서에서 커스텀 태그를 최초로 사용할 경우 태그 클래스를 객체로 생성하기 위한 생성자 한번만 호출
 	public HelloTag() {
 		//System.out.println("HelloTag 클래스의 기본 생성자 호출 - 객체 생성");
 	}

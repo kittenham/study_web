@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DOCTYPE은 mybatis 홈페이지-시작하기에 있다. -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- environments : environment 엘리먼트를 등록하기 위한 상위 엘리먼트 -->
+	<!-- default 속성 : environment 엘리먼트의 식별자(id 속성값)을 속성값으로 설정 -->
+	<!-- => mybatis 프레임워크가 기본적으로 사용하기 위한 접속 DBMS 서버를 지정한다. -->
+	<environments default="">
+		<!-- environment : DBMS 서버 접속에 필요한 정보를 설정하기 위한 엘리먼트 -->
+		<!-- => Connection 객체를 생성하기 위한 정보를 제공하는 것이다. SQL 명령은 다른 파일에서 진행한다. -->
+		<environment id="development">
+			<!-- transactionManager : 트렌젝션 관리자(커밋 또는 롤백 처리)를 설정하기 위한 엘리먼트 -->
+			<!-- type 속성 : [JDBC] 또는 [MANAGED] 중 하나를 속성값으로 설정 -->
+			<!-- => JDBC 속성값 : JDBC 기능을 사용하여 직접 트렌젝션을 관리한다. -->
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED"/>
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin@localhost:1521:xe"/>
+				<property name="username" value="scott"/>
+				<property name="password" value="tiger"/>
+		</environment>
+	</environments>
+</configuration>
