@@ -23,13 +23,14 @@
 	<%-- 해결법) 컨텍스트 경로를 제공받아 웹자원의 경로를 절대경로로 표현하여 제공하면 된다. --%>
 	<img src="/mvc/jstl/images/Koala.jpg" width="200">
 	
-	
+	<%-- request.getContextPath() 메소드를 호출하여 컨텍스트 경로를 반환받아 절대경로로 표현  --%>
 	<img src="<%=request.getContextPath() %>/jstl/imgaes/Koala.jpg" width="200">
 	
-	
+	<%-- EL 표현식에서 pageContext 내장객체를 사용하여 컨텍스트 경로를 제공받아 절대경로로 표현 --%>
 	<img src="${pageContext.request.contextPath }/jstl/imgaes/Koala.jpg" width="200">
 	
-	
+	<%-- url 태그 : 컨텍스트 경로가 포함된 웹자원의 절대경로를 제공하는 태그 --%>
+	<%-- value 속성 : 컨텍스트 경로를 제외한 웹자원의 절대경로를 속성값으로 설정 --%>
 	<img src="<c:url value="/jstl/images/Koala.jpg"/>" width="200">
 </body>
 </html>
