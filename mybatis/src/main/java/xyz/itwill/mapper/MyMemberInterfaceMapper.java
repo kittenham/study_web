@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Update;
 
 import xyz.itwill.dto.MyMember;
 
-//mybatis 프레임워크에서는 인터페이스를 이용하여 매퍼 파일 작성이 가능하다.
-// => 추상메소드에 매퍼 어노테이션(Mapper Annotation; @)을 사용하여 SQL 명령을 작성하여 등록한다.
+//mybatis 프레임워크에서는 인터페이스를 이용하여 매퍼 파일을 작성 가능
+// => 추상메소드에 매퍼 어노테이션(Mapper Annotation)을 사용하여 SQL 명령을 작성하여 등록
 public interface MyMemberInterfaceMapper {
 	//@Insert : 추상메소드에 INSERT 명령을 등록하기 위한 어노테이션
 	//value 속성 : 추상메소드에 등록될 SQL 명령을 속성값으로 설정
@@ -19,7 +19,6 @@ public interface MyMemberInterfaceMapper {
 	//추상메소드의 매개변수에서 SQL 명령 작성에 필요한 객체(값)을 전달받기 위해 선언하며
 	//추상메소드 반환형은 실행결과를 객체(값)로 제공받기 위한 Java 자료형을 선언
 	int insertMember(MyMember member);
-	//일반 xml파일과 비교할때 int : resultType 속성값,  insertMember : elementid로 비교 하면됨.
 	
 	//@Update : 추상메소드에 UPDATE 명령을 등록하기 위한 어노테이션
 	@Update("update mymember set name=#{name}, phone=#{phone}, email=#{email} where id=#{id}")

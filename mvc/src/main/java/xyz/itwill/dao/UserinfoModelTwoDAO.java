@@ -10,7 +10,7 @@ import java.util.List;
 import xyz.itwill.dto.UserinfoDTO;
 
 public class UserinfoModelTwoDAO extends JdbcDAO {
-	private static UserinfoModelOneDAO _dao;
+	private static UserinfoModelTwoDAO _dao;
 	
 	private UserinfoModelTwoDAO() {
 		// TODO Auto-generated constructor stub

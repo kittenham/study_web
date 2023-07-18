@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.itwill.mapper.MyCommentMapper">
+	<insert id="insertComment1" parameterType="MyComment1">
+		insert into mycomment values(mycomment_seq.nextval, #{commentId}, #{commentContent}, sysdate)
+	</insert>
+	
+	<insert id="insertComment2" parameterType="MyComment1">
+		<!-- selectKey : SELECT 명령의 검색결과값을 제공받아 insert 엘리먼트의 parameterType 속성값으로
+			 설정된 객체의 필드값으로 저장하기 위한 하위 엘리먼트 
+			 => insert 엘리먼트의 종속된 엘리먼트이다.(따라서 다른곳에서는 못쓰고 insert에서만 사용할 수 있다.)-->
+		<!-- => 사용이유 : 자동 증가값 또는 난수값을 SELECT 명령으로 검색하여 객체 필드에 저장하여 
+						   insert 명령에서 사용하기 위해 작성한다. -->
+		<!-- resultType 속성 : SELECT 명령으로 검색된 결과값을 제공받기 위한 java 자료형을
+			 속성값으로 설정하면 된다.
+			 => 자바 자료형 대신 typeAlias 엘리먼트로 제공된 별칭을 사용할 수 있다. -->
+		<!-- keyProperty 속성 : insert 엘리먼트의 parameterType 속성값으로 설정된 클래스의 필드명을 속성값으로 설정한다. -->
+		<!-- order 속성 : [BEFORE] 또는 [AFTER] 중 하나를 속성값으로 설정한다. -->
+		<selectKey resultType="int" keyProperty="commentNo" order="BEFORE">
+			select mycomment_seq.nextval from dual
+		</selectKey>
+		insert into mycomment values(#{commentNo}, #{commentId}, #{commentContent}, sysdate)
+	</insert>
+	
+	<!-- resultType 속성을 사용하여 검색행이 Java 객체로 제공되도록 자동 매핑 처리 -->
+	<!-- => 검색행의 컬럼명과 resultType 속성값으로 설정된 클래스의 필드명이 같도록 작성 -->
+	<!-- 
+	<select id="selectCommentList1" resultType="MyComment1">
+		select comment_no, comment_id, comment_content, comment_date from mycomment order by comment_no desc
+	</select>
+	 -->
+	
+	<!-- comment2는 수동매핑을 하기로 해서 자동매핑이 안되기 때문에 이렇게 하면 안됨. -->
+	<!-- 검색행의 컬럼명과 resultType 속성값으로 설정된 클래스의 필드명이 모두 다르기 때문에
+	resultType 속성값으로 설정된 클래스의 객체 대신 NULL이 제공된다. =>NullPointException 발생함. --> 
+	<!-- 
+	<select id="selectCommentList2" resultType="MyComment2">
+		select comment_no, comment_id, comment_content, comment_date from mycomment order by comment_no desc
+	</select>
+	 -->
+	 
+	<!-- 해결법 : 검색행의 컬럼명을 resultType 속성값으로 설정된 클래스의 필드명과 같도록 ColumnAlias 기능을 사용하여 검색하면 된다. -->
+	<!-- 만약 식별자로 사용하기 부적절한 단어(date, (공백)등)를 쓰게된다면 "" 기호를 사용하여 Alias(별칭)으로 사용가능하다. -->
+	<!--  
+	<select id="selectCommentList2" resultType="MyComment2">
+		select comment_no no, comment_id id, comment_content content, comment_date "date" 
+			from mycomment order by comment_no desc
+	</select>
+	-->
+	 
+	<!-- select 엘리먼트의 resultMap 속성을 사용하여 검색행을 Java 객체로 수동 매핑하여 제공 -->
+	 <resultMap type="MyComment2" id="myComment2ResultMap">
+	 	<id column="comment_no" property="no"/>
+	 	<result column="comment_id" property="id"/>
+	 	<result column="comment_content" property="content"/>
+	 	<result column="comment_date" property="date"/>
+	 </resultMap>
+	 
+	 <select id="selectCommentList2" resultMap="myComment2ResultMap">
+	 	select comment_no, comment_id, comment_content, comment_date from mycomment order by comment_no
+	 </select>
+</mapper>

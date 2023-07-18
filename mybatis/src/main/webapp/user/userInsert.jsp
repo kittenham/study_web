@@ -2,11 +2,14 @@
 <%@page import="xyz.itwill.dao.MyUserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%
 	MyUserDAO.getDAO().insertUser(new MyUser("abc","홍길동"));
 	MyUserDAO.getDAO().insertUser(new MyUser("xyz","임꺽정"));
 	MyUserDAO.getDAO().insertUser(new MyUser("opq","전우치"));
+	
 %>    
+  
 <!DOCTYPE html>
 <html>
 <head>

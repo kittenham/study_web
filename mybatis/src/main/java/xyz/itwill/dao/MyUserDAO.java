@@ -1,5 +1,7 @@
 package xyz.itwill.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import xyz.itwill.dto.MyUser;
@@ -22,7 +24,7 @@ public class MyUserDAO extends AbstractSession {
 	
 	
 	public int insertUser(MyUser user) {
-		SqlSession sqlSession = getSqlSessionFactory().openSession(user); //자동커밋 되도록 허용
+		SqlSession sqlSession = getSqlSessionFactory().openSession(true); //자동커밋 되도록 허용
 		try {
 			return sqlSession.getMapper(MyUserMapper.class).insertUser(user);
 		} finally {
@@ -30,4 +32,12 @@ public class MyUserDAO extends AbstractSession {
 		}
 	}
 	
+	public List<MyUser> selectUserList() {
+		SqlSession sqlSession=getSqlSessionFactory().openSession(true);
+		try {
+			return sqlSession.getMapper(MyUserMapper.class).selectUserList();
+		} finally {
+			sqlSession.close();
+		}
+	}
 }
