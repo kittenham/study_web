@@ -34,13 +34,14 @@
 	<!-- resultType 속성 : 검색행을 객체로 제공하기 위한 Java 자료형을 속성값으로 설정 -->
 	<!-- => Java 자료형 대신 typeAlias 엘리먼트의 별칭 사용 가능 -->
 	<!-- resultType 속성값으로 클래스를 설정한 경우 속성값으로 설정된 클래스의 객체를 생성하여
-	검색행의 컬럼값을 컬럼과 같은 이름의 객체 필드에 저장하여 제공 - 자동 매핑 -->
+	검색행의 컬럼값을 컬럼과 같은 이름의 객체 필드에 저장하여 제공 - "자동 매핑" -->
+	<!-- 주의!) resultType의 이름과 sql 테이블의 이름이 같아야 실행이 이루어짐! -->
 	<select id="selectMember" parameterType="string" resultType="MyMember">
 		select id, name, phone, email from mymember where id=#{id} 
 	</select>
 	
-	<!-- SELECT 명령으로 다수행이 검색돼도 resultType 속성에는 하나의 검색행을 객체로 매핑하기
-	위한 Java 자료형을 속성값으로 설정 -->
+	<!-- SELECT 명령으로 다수행을 검색돼도 resultType 속성에는 하나의 검색행을 객체로 매핑하기
+	위한 Java 자료형을 속성값으로 설정한다. -->
 	<select id="selectMemberList" resultType="MyMember">
 		select * from mymember order by id
 	</select>

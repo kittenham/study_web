@@ -63,6 +63,8 @@ public class StudentDAO {
 			// => elementId 매개변수에는 매퍼 식별자(mapper 엘리먼트의 namespace 속성값)와
 			//select 엘리먼트의 식별자(id 속성값)을 이용한 문자열을 전달받아 매퍼에 등록된 SQL
 			//명령을 DBMS 서버에 전달하여 실행하고 실행결과를 Java 객체로 매핑 처리하여 반환
+			// xyz.itwill.mapper.StudentMapper : 이만큼이 namespace
+			// selectStudentList : 나머지가 elementId
 			return sqlSession.selectList("xyz.itwill.mapper.StudentMapper.selectStudentList");
 		} finally {
 			//SqlSession.close() : SqlSession 객체가 사용한 JDBC 관련 객체를 제거하는 메소드

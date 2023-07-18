@@ -52,9 +52,10 @@ public class MyMemberXMLDAO {
 			// => SQL 명령 작성에 필요한 값(객체)이 없는 경우 parameterValue 매개변수에 값 미전달
 			int rows=sqlSession.insert("MyMemberXMLMapper.insertMember", member);
 			
-			//mybatis 프레임워크는 기본적으로 AutoCommit 기능을 비활성화 처리하고 SQL 명령을
-			//DBMS 서버에 전달하여 실행
-			// => DML 명령을 DBMS 서버에 전달하여 실행한 경우 반드시 커밋 또는 롤백 처리
+			//커밋과 롤백을 꼭 해줘야 하는 이유 
+			//=> mybatis 프레임워크는 기본적으로 AutoCommit 기능을 비활성화 처리하고 SQL 명령을
+			//	 DBMS 서버에 전달하여 실행하기 때문이다. 따라서 커밋과 롤백을 수동으로 해주지않으면 제대로 실행되지 않는다.
+			//	 따라서, DML 명령을 DBMS 서버에 전달하여 실행한 경우 반드시 커밋 또는 롤백 처리
 			if(rows > 0) {
 				//SqlSession.commit() : 트렌젝션 적용 명령(COMMIT)을 DBMS 서버에 전달하여 실행 - 커밋 처리
 				sqlSession.commit();
@@ -73,7 +74,7 @@ public class MyMemberXMLDAO {
 	public int updateMember(MyMember member) {
 		//SqlSessionFactory.openSession(boolean autoCommit) : SqlSession 객체를 생성하여 반환하는 메소드
 		// => false : AutoCommit 기능 비활성화(기본), true : AutoCommit 기능 활성화
-		SqlSession sqlSession=getSqlSessionFactory().openSession(true);
+		SqlSession sqlSession=getSqlSessionFactory().openSession(true); //오토커밋 기능을 활성화 했으므로 수동으로 커밋롤백을 할 필요가 없어짐.
 		try {
 			//SqlSession.update(String elementId[, Object parameterValue]) : 매퍼에 등록된 
 			//update 엘리먼트의 SQL 명령(UPDATE)을 제공받아 DBMS 서버에 전달하여 실행하고 
@@ -105,7 +106,7 @@ public class MyMemberXMLDAO {
 			//SqlSession.selectOne(String elementId[, Object parameterValue]) : 매퍼에 등록된 
 			//select 엘리먼트의 SQL 명령(SELECT)을 제공받아 DBMS 서버에 전달하여 실행하고 
 			//검색결과가 저장된 객체(값)를 제공받아 반환하는 메소드
-			// => 하나의 행만 검색하는 SELECT 명령을 DBMS 서버에 전달하여 실행할 경우 호출하는 메소드 
+			// => 하나의 행만 검색하는 SELECT 명령을 DBMS 서버에 전달하여 실행할 경우 호출하는 메소드 => selectOne
 			return sqlSession.selectOne("MyMemberXMLMapper.selectMember", id);
 		} finally {
 			sqlSession.close();
@@ -116,10 +117,10 @@ public class MyMemberXMLDAO {
 	public List<MyMember> selectMemberList() {
 		SqlSession sqlSession=getSqlSessionFactory().openSession(true);
 		try {
-			//SqlSession.selectOne(String elementId[, Object parameterValue]) : 매퍼에 등록된 
+			//SqlSession.selectList(String elementId[, Object parameterValue]) : 매퍼에 등록된 
 			//select 엘리먼트의 SQL 명령(SELECT)을 제공받아 DBMS 서버에 전달하여 실행하고 
 			//검색결과가 저장된 List 객체를 제공받아 반환하는 메소드
-			// => 여러개의 행을 검색하는 SELECT 명령을 DBMS 서버에 전달하여 실행할 경우 호출하는 메소드 
+			// => 여러개의 행을 검색하는 SELECT 명령을 DBMS 서버에 전달하여 실행할 경우 호출하는 메소드 => selectList
 			return sqlSession.selectList("MyMemberXMLMapper.selectMemberList");
 		} finally {
 			sqlSession.close();
