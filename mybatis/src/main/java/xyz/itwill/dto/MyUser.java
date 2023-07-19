@@ -9,8 +9,8 @@ create table myuser(user_id VARCHAR2(50) primary key, user_name VARCHAR2(50));
 
 이름        널?       유형           
 --------- -------- ------------ 
-USER_ID   NOT NULL VARCHAR2(50) 
-USER_NAME          VARCHAR2(50) 
+USER_ID   NOT NULL VARCHAR2(50) - 아이디
+USER_NAME          VARCHAR2(50) - 이름
 
  */
 
