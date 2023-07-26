@@ -24,4 +24,6 @@ public class AnnotationConfigurationBean {
 		return new ComponentAnnotationBean();
 	}
 	*/
+	
+	
 }
