@@ -7,6 +7,7 @@
 
 	<!-- <bean class="xyz.itwill04.bean.AnnotationBean" id="annotationBean"/> -->
 	
+	<!-- 기본 namespace는 beans에 생성 -->
 	<!-- component-scan : 스프링 어노테이션(Sprjing Annotation)을 스프링 컨테이너가 검색하여
 	처리할 수 있도록 설정하는 엘리먼트 -->
 	<!-- => context 네임스페이스의 spring-context.xsd 파일에 의해 제공되는 엘리먼트 -->
