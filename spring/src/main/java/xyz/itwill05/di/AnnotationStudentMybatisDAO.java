@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AnnotationStudentJdbcDAO implements StudentDAO{
-
-	public AnnotationStudentJdbcDAO() {
+public class AnnotationStudentMybatisDAO implements StudentDAO{
+	public AnnotationStudentMybatisDAO() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public int insertStudnet(Student student) {
 		// TODO Auto-generated method stub
@@ -39,6 +38,7 @@ public class AnnotationStudentJdbcDAO implements StudentDAO{
 	public List<Student> selectStudentList() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}	
 
+	
 }

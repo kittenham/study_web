@@ -2,21 +2,17 @@ package xyz.itwill05.di;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component(value = "studentService")
 public class AnnotationStudentServiceImpl implements StudentService{
-	
+	@Autowired   //자동으로 의존성을 주입하는 어노테이션
 	private StudentDAO studentDAO;
 	
 
 	public AnnotationStudentServiceImpl() {
 		// TODO Auto-generated constructor stub
-	}
-	
-	public StudentDAO getStudentDAO() {
-		return studentDAO;
-	}
-	
-	public void setStudentDAO(StudentDAO studentDAO) {
-		this.studentDAO = studentDAO;
 	}
 	
 	@Override
