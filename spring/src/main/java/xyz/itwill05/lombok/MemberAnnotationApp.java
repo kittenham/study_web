@@ -1,17 +1,21 @@
-package xyz.itwill05.di;
+package xyz.itwill05.lombok;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AnnotationStudentApp {
+public class MemberAnnotaionApp {
 	public static void main(String[] args) {
 		System.out.println("=============== Spring Container 초기화 전 ===============");
-		ApplicationContext context=new ClassPathXmlApplicationContext("05-4_diAnnotation.xml");
+		ApplicationContext context=new ClassPathXmlApplicationContext("05-5_lombok.xml");
 		System.out.println("=============== Spring Container 초기화 후 ===============");
-		//StudentService service=context.getBean("annotationStudentServiceImpl", StudentService.class);
-		StudentService service=context.getBean("studentService", StudentService.class);
-		service.addStudent(null);
+		MemberService service=context.getBean("memberService", MemberService.class);
+		
+		service.addMember(null);
+		service.modifyMember(null);
+		service.removeMember(null);
+		service.getMember(null);
+		service.getMemberList();
 		System.out.println("==========================================================");
-		((ClassPathXmlApplicationContext)context).close();			
+		((ClassPathXmlApplicationContext)context).close();		
 	}
 }
