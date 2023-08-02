@@ -11,6 +11,8 @@
 		<!-- host 필드 : SMTP 서비스를 제공하는 메일 서버의 이름을 저장 -->
 		<property name="host" value="smtp.gmail.com"/>
 		<!-- port 필드 : SMTP 서비스를 제공하는 메일 서버의 PORT 번호를 저장 -->
+		<!-- 25번이 아니라 587번 포트 사용 이유 : 보안때문에(지금 포트는 stmps를 사용하고 있다.) -->
+		<!-- smtp와 smtps 차이 : smtps는 암호화해서 보내기 때문에 포트를 25번이 아니라 587번 포트를 사용함. -->
 		<property name="port" value="587"/>
 		<!-- username 필드 : SMTP 서비스를 제공하는 메일 서버의 접속 사용자 이름(아이디)을 저장 -->
 		<property name="username" value="ocj1778"/>
