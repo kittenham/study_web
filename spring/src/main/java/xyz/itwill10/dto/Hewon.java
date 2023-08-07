@@ -1,4 +1,4 @@
-package xyz.itwill07.aop;
+package xyz.itwill10.dto;
 
 import lombok.Data;
 
