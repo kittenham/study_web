@@ -38,6 +38,24 @@ public class AnnotationStudentMybatisDAO implements StudentDAO{
 	public List<Student> selectStudentList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int insertStudent(Student student) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateStudent(Student student) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteStudent(int num) {
+		// TODO Auto-generated method stub
+		return 0;
 	}	
 
 	
