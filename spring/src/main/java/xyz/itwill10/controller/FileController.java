@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
 import xyz.itwill10.dto.FileBoard;
 import xyz.itwill10.service.FileBoardService;
-import xyz.itwill10.service.fileBoardService;
 
 //파일을 전달받아 서버 디렉토리에 업로드 처리하기 위한 방법
 //1.commons-fileupload 라이브러리를 프로젝트 빌드 처리 - 메이븐 : pom.xml
