@@ -2,18 +2,23 @@ package xyz.itwill10.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import lombok.RequiredArgsConstructor;
+import xyz.itwill10.dto.FileBoard;
+import xyz.itwill10.service.FileBoardService;
+import xyz.itwill10.service.fileBoardService;
 
 //파일을 전달받아 서버 디렉토리에 업로드 처리하기 위한 방법
 //1.commons-fileupload 라이브러리를 프로젝트 빌드 처리 - 메이븐 : pom.xml
@@ -21,12 +26,14 @@ import lombok.RequiredArgsConstructor;
 //클래스를 Spring Bean으로 등록
 //3.MultipartHttpServletRequest 객체를 사용하여 [multipart/form-data] 형태로 전달된 값 또는 파일을 제공받아 처리
 
-@Controller
+@Controller	
 @RequestMapping("/file")
 @RequiredArgsConstructor
 public class FileController {
 	//WebApplicationContext 객체(스프링 컨테이너)를 제공받아 필드에 의존성 주입
 	private final WebApplicationContext context;
+	//FileBoardService 객체를 제공받아 필드에 의존성 주입
+	private final FileBoardService fileBoardService;
 	
 	@RequestMapping(value = "/upload1", method = RequestMethod.GET)
 	public String uploadOne() {
@@ -96,8 +103,9 @@ public class FileController {
 		
 		//전달파일을 서버 디렉토리에 저장될 업로드 파일정보가 저장된 File 객체 생성
 		// => 서버 디렉토리에 저장된 파일이름은 중복되지 않는 이름으로 사용되도록 변경
-		//UUID.randomUUID() : 36Byte의 문자열로 구현된 식별자를 생성하여 반환하는 메소드
-		String uploadFilename=UUID.randomUUID()+"_"+uploadFile.getOriginalFilename();
+		//UUID.randomUUID() : 36Byte의 문자열로 구현된 식별자가 저장된 UUID 객체를 생성하여 반환하는 메소드
+		//UUID.toString() : UUID 객체에 저장된 36Byte의 문자열로 구현된 식별자를 반환하는 메소드 
+		String uploadFilename=UUID.randomUUID().toString()+"_"+uploadFile.getOriginalFilename();
 		File file=new File(uploadDirectory, uploadFilename);
 		
 		//전달파일을 서버 디렉토리에 저장 - 업로드 처리
@@ -106,11 +114,86 @@ public class FileController {
 		model.addAttribute("uploaderName", uploaderName);
 		model.addAttribute("uploadFilename", uploadFilename);
 		
-		return "file/upload_success";
+		return "file/upload_success_one";
 	}
 	
-	@RequestMapping(value = "/upload2", method = RequestMethod.POST)
+	@RequestMapping(value = "/upload2", method = RequestMethod.GET)
+	public String uploadTwo() {
+		return "file/form_two";
+	}
 	
+	//전달파일이 여러개인 경우 매개변수를 List 인터페이스로 선언하여 전달파일이 저장된  
+	//MultipartFile 객체가 여러개 저장된 List 객체로 제공받아 처리
+	@RequestMapping(value = "/upload2", method = RequestMethod.POST)
+	public String uploadTwo(@RequestParam String uploaderName
+			, @RequestParam List<MultipartFile> uploadFileList, Model model) throws IOException {
+		//전달파일을 저장하기 위한 서버 디렉토리의 시스템 경로를 반환받아 저장
+		String uploadDirectory=context.getServletContext().getRealPath("/resources/images/upload");
+		
+		//업로드 처리된 모든 파일의 이름을 저장하기 위한 List 객체 생성
+		List<String> filanameList=new ArrayList<String>();
+		
+		for(MultipartFile multipartFile : uploadFileList) {
+			if(multipartFile.isEmpty() || !multipartFile.getContentType().equals("image/jpeg")) {
+				return "file/upload_fail";
+			}
+			
+			String uploadFilename=UUID.randomUUID().toString()+"_"+multipartFile.getOriginalFilename();
+			File file=new File(uploadDirectory, uploadFilename);
+			
+			//전달파일을 서버 디렉토리에 저장 - 업로드 처리
+			multipartFile.transferTo(file);
+			
+			//List 객체에 업로드 처리된 파일 이름을 추가하여 저장
+			filanameList.add(uploadFilename);
+		}
+		
+		model.addAttribute("uploaderName", uploaderName);
+		model.addAttribute("filanameList", filanameList);		
+		
+		return "file/upload_success_two";
+	}
+	
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String fileBoardWrite() {
+		return "file/board_write";
+	}
+	
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String fileBoardWrite(@ModelAttribute FileBoard fileBoard) throws IllegalStateException, IOException {
+		if(fileBoard.getMultipartFile().isEmpty()) {
+			return "file/board_write";
+		}
+		
+		//전달파일을 저장하기 위한 서버 디렉토리의 시스템 경로를 반환받아 저장
+		// => 다운로드 프로그램에서만 파일에 접근 가능하도록 /WEB-INF 폴더에 업로드 폴더 생성
+		String uploadDirectory=context.getServletContext().getRealPath("/WEB-INF/upload");
+		
+		//사용자로부터 입력받아 전달받은 파일의 이름을 반환받아 Command 객체의 필드값 변경
+		String origin=fileBoard.getMultipartFile().getOriginalFilename();
+		fileBoard.setOrigin(origin);
+		
+		//서버 디렉토리에 업로드 처리되어 저장된 파일의 이름을 반환받아 Command 객체의 필드값 변경
+		// => 서버 디렉토리에 저장된 파일 이름은 중복되지 않도록 고유값 사용
+		// => 중복되지 않는 고유값으로 시스템의 현재 날짜와 시간에 대한 정수값(TimeStamp)을 사용
+		String upload=System.currentTimeMillis()+"";
+		fileBoard.setUpload(upload);
+		
+		//파일 업로드 처리
+		fileBoard.getMultipartFile().transferTo(new File(uploadDirectory, upload));
+		
+		//FILEBOARD 테이블에 행 삽입
+		fileBoardService.addFileBoard(fileBoard);
+		
+		return "redirect:/file/list";
+	}
+	
+	@RequestMapping("/list")
+	public String fileBoardList(Model model) {
+		model.addAttribute("fileBoardList", fileBoardService.getFileBoardList());
+		return "file/board_list";
+	}
+
 }
 
 
