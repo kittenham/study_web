@@ -90,5 +90,16 @@
 			</tr>
 		</table>
 	</div>
+	
+	
+	<script type="text/javascript">
+	//현재 요청 페이지 번호를 저장하기 위한 전역변수
+	//=> 현재 모든 함수에서
+	
+	</script>
+	
+	
+	
+	
 </body>
 </html>
