@@ -9,8 +9,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import xyz.itwill10.dto.Userinfo;
 import xyz.itwill10.exception.BadRequestException;
 
-//·Î±×ÀÎ »ç¿ëÀÚ °ü·Ã ±ÇÇÑ Ã³¸®¸¦ À§ÇØ ÀÛ¼ºµÈ ÀÎÅÍ¼ÁÅÍ Å¬·¡½º
-// => ¿äÃ» Ã³¸® ¸Ş¼Òµå°¡ È£Ãâ Àü¿¡ ºñ·Î±×ÀÎ »ç¿ëÀÚ°¡ ÆäÀÌÁö¸¦ ¿äÃ»ÇÑ °æ¿ì ÀÎÀ§ÀûÀ¸·Î ¿¹¿Ü ¹ß»ı
+//ë¡œê·¸ì¸ ì‚¬ìš©ì ê´€ë ¨ ê¶Œí•œ ì²˜ë¦¬ë¥¼ ìœ„í•´ ì‘ì„±ëœ ì¸í„°ì…‰í„° í´ë˜ìŠ¤
+// => ìš”ì²­ ì²˜ë¦¬ ë©”ì†Œë“œê°€ í˜¸ì¶œ ì „ì— ë¹„ë¡œê·¸ì¸ ì‚¬ìš©ìê°€ í˜ì´ì§€ë¥¼ ìš”ì²­í•œ ê²½ìš° ì¸ìœ„ì ìœ¼ë¡œ ì˜ˆì™¸ ë°œìƒ
 public class LoginAuthInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -19,11 +19,12 @@ public class LoginAuthInterceptor implements HandlerInterceptor {
 		
 		Userinfo loginUserinfo=(Userinfo)session.getAttribute("loginUserinfo");
 		
-		//ºñ·Î±×ÀÎ »ç¿ëÀÚÀÎ °æ¿ì
+		//ë¹„ë¡œê·¸ì¸ ì‚¬ìš©ìì¸ ê²½ìš°
 		if(loginUserinfo == null) {
-			throw new BadRequestException("ºñÁ¤»óÀûÀÎ ¿äÃ»ÀÔ´Ï´Ù.");
+			throw new BadRequestException("ë¹„ì •ìƒì ì¸ ìš”ì²­ì…ë‹ˆë‹¤.");
 		}
 		
-		return true;//¿äÃ» Ã³¸® ¸Ş¼Òµå È£Ãâ
+		return true;//ìš”ì²­ ì²˜ë¦¬ ë©”ì†Œë“œ í˜¸ì¶œ
 	}
 }
+
